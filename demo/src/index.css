@@ -1,0 +1,26 @@
+@font-face {
+  font-family: main-font;
+  src: url("../public/font/Lalezar-Regular.ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+  font-family: main-font;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+:root {
+  --first-color: #fff;
+  --second-color: #05d561;
+  --shadow-color: #000;
+}
+.link{
+  color: inherit;
+  text-decoration: none;
+}

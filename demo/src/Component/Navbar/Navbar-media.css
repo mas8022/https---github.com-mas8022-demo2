@@ -1,0 +1,46 @@
+@media screen and (max-width: 864px) {
+    .navbar input{
+        padding: 0 1rem 0 0;
+    }
+}
+@media screen and (max-width: 800px) {
+    .hamBar{
+        display: flex;
+    }
+    .navbar ul{
+        display: none;
+    }
+    .searchBar {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 574px) {
+    .searchBar{
+        width: 25rem;
+    }
+}
+@media screen and (max-width: 540px) {
+    .navbar{
+        padding: 0 2rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    .searchBar {
+        margin-left: 0;
+    }
+    .logo {
+        width: 5rem;
+        height: 5rem;
+    }
+}
+@media screen and (max-width: 420px) {
+    .navbar{
+        padding: 0 1rem;
+    }
+}
+@media screen and (max-width: 400px) {
+    .hamBar{
+        width: 4rem;
+        height: 4rem;
+    }
+}
