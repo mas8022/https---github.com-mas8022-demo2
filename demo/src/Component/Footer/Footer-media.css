@@ -1,0 +1,64 @@
+@media screen and (max-width: 1300px) {
+  .bottomFooterContainer {
+    font-size: 2.5rem;
+  }
+  .inputFooterDiv {
+    width: 38rem;
+  }
+}
+@media screen and (max-width: 1110px) {
+  .bottomFooterContainer {
+    font-size: 2rem;
+  }
+  .inputFooterDiv {
+    width: 30rem;
+    height: 4.5rem;
+  }
+}
+@media screen and (max-width: 1010px) {
+  .topFooterContainer {
+    padding: 3rem 0rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .bottomFooterContainer h4 {
+    width: 20rem;
+  }
+  .inputFooterDiv input {
+    width: 0rem;
+  }
+}
+@media screen and (max-width: 830px) {
+  .footerContainer {
+    padding: 1.5rem 2rem;
+  }
+}
+@media screen and (max-width: 668px) {
+  .bottomFooterContainer {
+    flex-direction: column;
+    padding: 2rem;
+  }
+  .bottomFooterContainer h4 {
+    width: 33rem;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 630px) {
+  .topFooterContainer {
+    padding: 0rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .topFooterContainer {
+    height: 53rem;
+  }
+  .thf {
+    width: 45rem;
+    margin-top: 3rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .thf {
+    width: 35rem;
+  }
+}
