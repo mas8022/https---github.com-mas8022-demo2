@@ -1,8 +1,40 @@
-import React from 'react'
-import './Home.css'
+import React, { useEffect } from "react";
+import "./Home.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
+  const sliderSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    centerMode: true,
+    centerPadding: "0",
+  };
+
   return (
-    <div className='home'></div>
-  )
+    <div className="home">
+      <Slider className="momWelcomeDiv" {...sliderSettings}>
+        <div className="welcomeDiv hhy">
+          <h3>تابستان شاد<br /> با غذاهای ارگانیک سالم</h3>
+          <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
+          <div className="welcomeBtn">خرید کن</div>
+        </div>
+        <div className="welcomeDiv lki">
+          <h3>تابستان شاد <br />با غذاهای ارگانیک سالم</h3>
+          <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
+          <div className="welcomeBtn">خرید کن</div>
+        </div>
+        <div className="welcomeDiv tgf">
+          <h3>تابستان شاد <br />با غذاهای ارگانیک سالم</h3>
+          <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
+          <div className="welcomeBtn">خرید کن</div>
+        </div>
+      </Slider>
+    </div>
+  );
 }

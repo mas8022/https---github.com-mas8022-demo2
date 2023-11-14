@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 999;
 }
 .logo{
     width: 6rem;
@@ -102,6 +103,7 @@ datalist option{
     padding: 2rem 1.5rem;
     direction: rtl;
     display: none;
+    z-index: 999;
 }
 .sidebarNav{
     list-style-type: none;
