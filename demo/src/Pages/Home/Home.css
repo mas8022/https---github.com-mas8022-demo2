@@ -105,3 +105,15 @@
     background-color: var(--second-color);
     margin: 0 auto;
 }
+.newProductSliderTitle{
+    width: 100%;
+    height: 5rem;
+    direction: rtl;
+    padding: 0 3rem;
+}
+.newProductSliderTitle span{
+    color: var(--third-color);
+    border-bottom: 2px solid var(--second-color);
+    font-size: 3rem;
+    
+}

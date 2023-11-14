@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductFlex from "../../Component/ProductFlex/ProductFlex";
 import ImagesHomeWelcome from "../../DataBase";
-
+import ProductSlider from '../../Component/ProductSlider/ProductSlider'
 export default function Home() {
   const sliderSettings = {
     infinite: true,
@@ -53,6 +53,9 @@ export default function Home() {
       </div>
       <hr />
       <ProductFlex info={ImagesHomeWelcome} />
+      <div className="newProductSliderTitle"><span>جدیدترین خوراک ها</span></div>
+      
+      <ProductSlider/>
     </div>
   );
 }

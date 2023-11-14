@@ -7,7 +7,7 @@ export default function ProductFlex({ info }) {
   return (
     <div className="productFlex">
       {info
-        ? info.map((item) => {
+        ? info.slice(0,8).map((item) => {
             return (
               <div
               className="productCard"

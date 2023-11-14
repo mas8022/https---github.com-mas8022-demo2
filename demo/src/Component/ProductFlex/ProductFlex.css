@@ -20,8 +20,8 @@
   flex-direction: column;
   transition: all linear 0.1s;
 }
-.productCard:hover{
-    scale: 102%;
+.productCard:hover {
+  scale: 102%;
 }
 .productTop {
   width: 100%;
@@ -57,12 +57,16 @@
   transition: all linear 0.2s;
   cursor: pointer;
 }
-.addProduct:hover{
-    color: var(--second-color);
-    background: var(--first-color);
+.addProduct:hover {
+  color: var(--second-color);
+  background: var(--first-color);
 }
-.addProduct:active{
-    scale: 85%;
+.addProduct:active {
+  scale: 85%;
+}
+.tde {
+  color: red;
+  transition: all linear 0.3s;
 }
 .trer {
   margin: 1rem auto auto 1rem;
@@ -76,10 +80,11 @@
   cursor: pointer;
   transition: all linear 0.2s;
 }
+
 .trer:active {
   background: var(--first-color);
 }
-.tde {
-  color: red !important;
-  z-index: 2;
+
+.trer:active .tde{
+  color: var(--second-color);
 }
