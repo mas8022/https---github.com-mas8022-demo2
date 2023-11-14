@@ -56,9 +56,52 @@
 .welcomeBtn:hover{
     background: var(--first-color);
     color: var(--second-color);
-    border: 10px solid var(--second-color);
-    outline: 10px solid var(--second-color);
+    border: 5px solid var(--second-color);
+    outline: 5px solid var(--second-color);
+    border-radius: 0;
 }
 .welcomeBtn:active{
     scale: 85%;
+}
+.homeSelectionFood{
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.homeSelectionFoodSon {
+    width: 40%;
+    height: 20rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px -5px var(--shadow-color);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.2rem;
+    color: var(--first-color);
+    transition: all linear 0.2s;
+    cursor: pointer;
+    padding: 2rem;
+}
+.gtr{
+    background: url('../../../public/images/360_F_589704609_b84XoVDaeopctL2Iz0lG4IQT86Dzm7xz.jpg');
+}
+.jry{
+    background: url('../../../public/images/What-Makes-Oriental-Cuisine-Appealing.jpg');
+}
+.homeSelectionFoodSon:hover{
+    scale: 102%;
+}
+.homeSelectionFoodSon:active{
+    scale: 98%;
+}
+.home hr {
+    width: 90%;
+    height: 2px;
+    background-color: var(--second-color);
+    margin: 0 auto;
 }

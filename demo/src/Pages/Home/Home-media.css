@@ -1,0 +1,10 @@
+@media screen and (max-width: 500px) {
+    .homeSelectionFood {
+        height: 20rem;
+    }
+    .homeSelectionFoodSon {
+        height: 12rem;
+        font-size: 2rem;
+        padding: 1rem;
+    }
+}

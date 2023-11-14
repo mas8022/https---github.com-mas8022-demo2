@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Home.css";
+import "./Home-media.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ProductFlex from "../../Component/ProductFlex/ProductFlex";
+import ImagesHomeWelcome from "../../DataBase";
 
 export default function Home() {
   const sliderSettings = {
@@ -19,22 +22,37 @@ export default function Home() {
   return (
     <div className="home">
       <Slider className="momWelcomeDiv" {...sliderSettings}>
+        <div className="welcomeDiv tgf">
+          <h3>
+            تابستان شاد <br />
+            با غذاهای ارگانیک سالم
+          </h3>
+          <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
+          <div className="welcomeBtn">خرید کن</div>
+        </div>
         <div className="welcomeDiv hhy">
-          <h3>تابستان شاد<br /> با غذاهای ارگانیک سالم</h3>
+          <h3>
+            تابستان شاد
+            <br /> با غذاهای ارگانیک سالم
+          </h3>
           <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
           <div className="welcomeBtn">خرید کن</div>
         </div>
         <div className="welcomeDiv lki">
-          <h3>تابستان شاد <br />با غذاهای ارگانیک سالم</h3>
-          <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
-          <div className="welcomeBtn">خرید کن</div>
-        </div>
-        <div className="welcomeDiv tgf">
-          <h3>تابستان شاد <br />با غذاهای ارگانیک سالم</h3>
+          <h3>
+            تابستان شاد <br />
+            با غذاهای ارگانیک سالم
+          </h3>
           <p>پیشنهاد منحصر به فرد -20٪ تخفیف در این هفته </p>
           <div className="welcomeBtn">خرید کن</div>
         </div>
       </Slider>
+      <div className="homeSelectionFood">
+        <div className="homeSelectionFoodSon gtr">فست فود ها</div>
+        <div className="homeSelectionFoodSon jry">غذاهای ایرانی</div>
+      </div>
+      <hr />
+      <ProductFlex info={ImagesHomeWelcome} />
     </div>
   );
 }
