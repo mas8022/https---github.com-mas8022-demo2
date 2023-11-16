@@ -138,7 +138,6 @@ export default function Navbar() {
             </li>
           </NavLink>
 
-          <div className="imageSidebar"></div>
         </ul>
       </div>
     </>

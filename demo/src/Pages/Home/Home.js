@@ -2,11 +2,11 @@ import React from "react";
 import "./Home.css";
 import "./Home-media.css";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import ProductFlex from "../../Component/ProductFlex/ProductFlex";
 import ImagesHomeWelcome from "../../DataBase";
 import ProductSlider from '../../Component/ProductSlider/ProductSlider'
+import Comments from "../../Component/Comments/Comments";
+
 export default function Home() {
   const sliderSettings = {
     infinite: true,
@@ -54,8 +54,8 @@ export default function Home() {
       <hr />
       <ProductFlex info={ImagesHomeWelcome} />
       <div className="newProductSliderTitle"><span>جدیدترین خوراک ها</span></div>
-      
       <ProductSlider/>
+      <Comments/>
     </div>
   );
 }

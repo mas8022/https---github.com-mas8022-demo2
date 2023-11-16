@@ -13,6 +13,7 @@
   background-position: center !important;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
 }
 .grdcd {
   width: 100%;
@@ -100,4 +101,9 @@
 }
 .tder:active .tderhg{
   color: var(--second-color);
+}
+
+
+.my-carousel .slick-slide {
+    margin: -15px; /* Adjust the margin-right value as needed for your desired gap */
 }
