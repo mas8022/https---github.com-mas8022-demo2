@@ -1,0 +1,8 @@
+@media screen and (max-width: 470px) {
+    .buyDiv{
+        width: 100%;
+    }
+    .buyBtn {
+        width: 8rem;
+    }
+}

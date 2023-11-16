@@ -5,7 +5,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-export default function ProductFlex({ info }) {
+export default function ProductFlex({ info, mode }) {
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -17,11 +17,11 @@ export default function ProductFlex({ info }) {
     <div className="productFlex">
       {info
         ? info.slice(0, 8).map((item) => {
-          console.log(item);
+            console.log(item);
             return (
               <div
                 data-aos="fade-up"
-                className="productCard"
+                className={mode === "add" ? "productCard" : "productCard dwhwe"}
                 style={{ background: `url('${item.image}')` }}
               >
                 <div className="productTop">
@@ -32,7 +32,11 @@ export default function ProductFlex({ info }) {
                 <div className="productDetails">
                   <h2>{item.name}</h2>
                   <p className="priceProduct">{item.price}تومان</p>
-                  <div className="addProduct">افزودن به سبد</div>
+                  {mode === "add" ? (
+                    <div className="addProduct">افزودن به سبد</div>
+                  ) : (
+                    <div className="addProduct dje">2</div>
+                  )}
                 </div>
               </div>
             );

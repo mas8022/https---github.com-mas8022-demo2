@@ -53,7 +53,7 @@ export default function Home() {
         <div className="homeSelectionFoodSon jry">غذاهای ایرانی</div>
       </div>
       <hr />
-      <ProductFlex info={ImagesHomeWelcome} />
+      <ProductFlex mode='add' info={ImagesHomeWelcome} />
       <div className="dee"></div>
       <Title title={"جدید ترین خوراکی ها"}/>
       <ProductSlider array={ImagesHomeWelcome}/>

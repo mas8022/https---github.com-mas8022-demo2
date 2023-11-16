@@ -90,3 +90,19 @@
 .trer:active .tde {
   color: var(--second-color);
 }
+
+.dje{
+  border-radius: 50%;
+  width: 4rem;
+}
+.dje:hover{
+  background: var(--second-color);
+  color: var(--first-color);
+}
+.dje:active{
+  scale: 1;
+}
+
+.dwhwe:hover{
+  scale: 1;
+}
