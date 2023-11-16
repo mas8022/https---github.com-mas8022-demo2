@@ -8,6 +8,7 @@ import CallIcon from "@mui/icons-material/Call";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import HomeIcon from "@mui/icons-material/Home";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
@@ -42,6 +43,15 @@ export default function Navbar() {
           >
             پروفایل
           </NavLink>
+          <NavLink
+            className={(link) =>
+              link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
+            }
+            to="/about"
+          >
+            درباره ما
+          </NavLink>
+
           <NavLink
             className={(link) =>
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
@@ -97,6 +107,17 @@ export default function Navbar() {
             className={(link) =>
               link.isActive ? "link sidebarRouteActive" : "link"
             }
+            to="/about"
+          >
+            <li>
+              درباره ما
+              <InfoOutlinedIcon className="aaa" style={{ fontSize: 30 }} />
+            </li>
+          </NavLink>
+          <NavLink
+            className={(link) =>
+              link.isActive ? "link sidebarRouteActive" : "link"
+            }
             to="/contactUs"
           >
             <li>
@@ -137,7 +158,6 @@ export default function Navbar() {
               <HomeIcon className="aaa" style={{ fontSize: 30 }} />
             </li>
           </NavLink>
-
         </ul>
       </div>
     </>

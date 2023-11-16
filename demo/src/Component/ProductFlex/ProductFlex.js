@@ -17,7 +17,6 @@ export default function ProductFlex({ info, mode }) {
     <div className="productFlex">
       {info
         ? info.slice(0, 8).map((item) => {
-            console.log(item);
             return (
               <div
                 data-aos="fade-up"

@@ -3,7 +3,7 @@
         padding: 0 1rem 0 0;
     }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 920px) {
     .hamBar{
         display: flex;
     }
