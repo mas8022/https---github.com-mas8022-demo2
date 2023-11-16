@@ -6,6 +6,7 @@ import ProductFlex from "../../Component/ProductFlex/ProductFlex";
 import ImagesHomeWelcome from "../../DataBase";
 import ProductSlider from '../../Component/ProductSlider/ProductSlider'
 import Comments from "../../Component/Comments/Comments";
+import Title from "../../Component/Title/Title";
 
 export default function Home() {
   const sliderSettings = {
@@ -53,9 +54,17 @@ export default function Home() {
       </div>
       <hr />
       <ProductFlex info={ImagesHomeWelcome} />
-      <div className="newProductSliderTitle"><span>جدیدترین خوراک ها</span></div>
-      <ProductSlider/>
+      <div className="dee"></div>
+      <Title title={"جدید ترین خوراکی ها"}/>
+      <ProductSlider array={ImagesHomeWelcome}/>
+      <div className="dee"></div>
+      <Title title={"محبوب ترین خوراکی ها"}/>
+      <ProductSlider array={ImagesHomeWelcome.slice(2,)}/>
+      <div className="dee"></div>
       <Comments/>
+      <div className="dee"></div>
+      
+
     </div>
   );
 }

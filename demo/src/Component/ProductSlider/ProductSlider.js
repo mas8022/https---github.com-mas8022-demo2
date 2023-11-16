@@ -1,10 +1,9 @@
 import React from "react";
 import "./ProductSlider.css";
 import Slider from "react-slick";
-import ImagesHomeWelcome from "../../DataBase";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export default function ProductSlider() {
+export default function ProductSlider({array}) {
   const sliderSettings = {
     infinite: true,
     speed: 500,
@@ -65,7 +64,7 @@ export default function ProductSlider() {
 
   return (
     <Slider {...sliderSettings}>
-      {ImagesHomeWelcome.slice(0, 9).map((item) => (
+      {array.slice(0, 9).map((item) => (
         <div className="newProducts">
           <div className="grdcd" style={{ background: `url('${item.image}')` }}></div>
           <div className="newProductDetails">

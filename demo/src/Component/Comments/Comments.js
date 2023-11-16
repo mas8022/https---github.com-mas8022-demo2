@@ -1,5 +1,6 @@
 import React from "react";
 import "./Comments.css";
+import './Comments-media.css'
 import Slider from "react-slick";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
@@ -10,7 +11,7 @@ export default function Comments() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2500,
     centerMode: true,
     responsive: [
