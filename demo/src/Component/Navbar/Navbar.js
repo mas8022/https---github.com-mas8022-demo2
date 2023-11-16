@@ -14,6 +14,10 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   const [sidebarFlag, setSidebarFlag] = useState(false);
 
+  const scrollUpSite = () => {
+    window.scrollTo(0,0);
+  };
+
   return (
     <>
       <div className="navbar">
@@ -40,6 +44,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/profile"
+            onClick={() => scrollUpSite()}
           >
             پروفایل
           </NavLink>
@@ -48,6 +53,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/about"
+            onClick={() => scrollUpSite()}
           >
             درباره ما
           </NavLink>
@@ -57,6 +63,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/contactUs"
+            onClick={() => scrollUpSite()}
           >
             تماس با ما
           </NavLink>
@@ -65,6 +72,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/favorites"
+            onClick={() => scrollUpSite()}
           >
             علاقه مندی ها
           </NavLink>
@@ -73,6 +81,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/basket"
+            onClick={() => scrollUpSite()}
           >
             خرید
           </NavLink>
@@ -81,6 +90,7 @@ export default function Navbar() {
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
             }
             to="/"
+            onClick={() => scrollUpSite()}
           >
             خانه
           </NavLink>
@@ -97,6 +107,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/profile"
+            onClick={() => scrollUpSite()}
           >
             <li>
               پروفایل
@@ -108,6 +119,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/about"
+            onClick={() => scrollUpSite()}
           >
             <li>
               درباره ما
@@ -119,6 +131,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/contactUs"
+            onClick={() => scrollUpSite()}
           >
             <li>
               تماس با ما
@@ -130,6 +143,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/favorites"
+            onClick={() => scrollUpSite()}
           >
             <li>
               علاقه مندی ها{" "}
@@ -141,6 +155,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/basket"
+            onClick={() => scrollUpSite()}
           >
             <li>
               خرید
@@ -152,6 +167,7 @@ export default function Navbar() {
               link.isActive ? "link sidebarRouteActive" : "link"
             }
             to="/"
+            onClick={() => scrollUpSite()}
           >
             <li>
               خانه

@@ -1,5 +1,99 @@
-.contactUs{
-    width: 100%;
-    height: 100vh;
-    background: purple;
+.contactUs {
+  width: 100%;
+  height: auto;
+  padding: 12rem 3rem 5rem 3rem;
+}
+.addressDiv {
+  width: 100%;
+  min-height: 10rem;
+
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  direction: rtl;
+  gap: 2rem;
+  margin-bottom: 20rem;
+}
+.addressDivSon {
+  width: 40rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: solid var(--shadow-color) 1px;
+}
+.addressDivSon p {
+  font-size: 2rem;
+  color: gray;
+  border-bottom: 1px dotted var(--shadow-color);
+}
+.contactUs form {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.contactUs form input {
+  height: 4rem;
+  margin-bottom: 0;
+}
+.contactUs form input,
+.contactUs form textarea {
+  width: 100%;
+  direction: rtl;
+  font-size: 1.7rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--shadow-color) !important;
+}
+.contactUs form input:focus {
+  outline: 1px solid var(--shadow-color) !important;
+}
+.contactUs form textarea:focus {
+  outline: 1px solid var(--shadow-color) !important;
+}
+.contactUs form textarea {
+  height: 20rem;
+  padding-top: 2rem;
+  margin-bottom: 3rem;
+}
+.formBtns {
+  width: 17rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.redza {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--second-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rerdza {
+  color: var(--first-color);
+}
+.redweza {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sw {
+  transition: all linear 0.3s;
+  cursor: pointer;
+}
+.sw:active {
+  scale: 70%;
+}
+.sdd {
+  height: 5rem !important;
 }

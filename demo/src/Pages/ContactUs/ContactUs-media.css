@@ -1,0 +1,11 @@
+@media screen and (max-width: 700PX) {
+    .contactUs form {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 480px) {
+  .addressDivSon {
+    border: 1px solid var(--shadow-color) !important;
+    border-bottom: 0px;
+  }
+}
