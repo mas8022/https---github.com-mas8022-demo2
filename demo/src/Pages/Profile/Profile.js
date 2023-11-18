@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 import "./Profile-media.css";
 import EditIcon from "@mui/icons-material/Edit";
-import { useContext } from "react";
 import context from "../../ContextSite";
 
 export default function Profile() {
   const profContext = useContext(context);
-
-  useEffect(() => {
-    profContext.setFlagLog(true);
-  }, []);
 
   return (
     <>
@@ -29,11 +24,11 @@ export default function Profile() {
             </label>
             <label htmlFor="#phoneNumber">شماره موبایل:</label>
             <label className="frfr" id="phoneNumber">
-            {profContext.user.userPhoneNumber}
+              {profContext.user.userPhoneNumber}
             </label>
             <label htmlFor="#email">ایمیل:</label>
             <label className="frfr" id="email">
-            {profContext.user.userEmail}
+              {profContext.user.userEmail}
             </label>
             <label htmlFor="#password">رمز عبور:</label>
             <label className="frfr" id="password">
@@ -52,9 +47,11 @@ export default function Profile() {
         <div className="rightProfilePage">
           <img
             className="ProfilePageImage"
-            
-            src={profContext.user.userImage !== undefined ? profContext.user.userImage : "images/man-avatar-profile-vector-21372076.jpg"}
-            
+            src={
+              profContext.user.userImage !== undefined
+                ? profContext.user.userImage
+                : "images/man-avatar-profile-vector-21372076.jpg"
+            }
             alt="profileImage"
           />
           <p>

@@ -5,6 +5,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import context from "../../ContextSite";
+import Loader from "../../Component/Loader/Loader";
 
 export default function Login() {
   const logContext = useContext(context);
@@ -19,6 +20,7 @@ export default function Login() {
   const [userEmailAlert, setUserEmailAlert] = useState(false);
   const [userPhoneNumberAlert, setUserPhoneNumberAlert] = useState(false);
   const [userPasswordAlert, setUserPasswordAlert] = useState(false);
+  const [loaderProf, setLoaderProf] = useState(false);
 
   const resetFormLoginHandle = () => {
     setUserEmailAlert(false);
@@ -92,19 +94,29 @@ export default function Login() {
       userPassword &&
       userImage
     ) {
+      setLoaderProf(true);
       fetch(
         "https://foodstore22-9bea4-default-rtdb.firebaseio.com/users.json",
         {
           method: "POST",
           body: JSON.stringify(newUser),
         }
-      ).then((res) => {
-        console.log(res);
-        logContext.setUser(newUser);
-        resetFormLoginHandle();
-        window.location.pathname = "/profile";
-        logContext.setShowLogin(false)
-      });
+      )
+        .then((res) => {
+          console.log(res);
+          if (res.status < 400) {
+            logContext.setFlagLog(true);
+            logContext.setShowLogin(false);
+            logContext.setUser(newUser);
+            resetFormLoginHandle();
+            setLoaderProf(false)
+          } else {
+            alert("لطفا به وی پی ان قوی تر متصل شوید");
+          }
+        })
+        .catch((err) =>
+          err !== undefined ? alert("لطفا به وی پی ان متصل شوید") : null
+        );
     }
   };
 
@@ -121,82 +133,85 @@ export default function Login() {
   };
 
   return (
-    <div className={logContext.showLogin ? "login loginActive" : "login"}>
-      <form action="#">
-        <LogoutIcon
-          onClick={() => logContext.setShowLogin(false)}
-          style={{ fontSize: 50 }}
-          className="existLogBtn"
-        />
-        <h4>ثبت نام کنید</h4>
+    <>
+      <Loader loader={loaderProf} />
+      <div className={logContext.showLogin ? "login loginActive" : "login"}>
+        <form action="#">
+          <LogoutIcon
+            onClick={() => logContext.setShowLogin(false)}
+            style={{ fontSize: 50 }}
+            className="existLogBtn"
+          />
+          <h4>ثبت نام کنید</h4>
 
-        <select
-          className="sex-select"
-          value={userSex}
-          onChange={(e) => setUserSex(e.target.value)}
-        >
-          <option value="man">آقای</option>
-          <option value="woman">خانم</option>
-        </select>
+          <select
+            className="sex-select"
+            value={userSex}
+            onChange={(e) => setUserSex(e.target.value)}
+          >
+            <option value="man">آقای</option>
+            <option value="woman">خانم</option>
+          </select>
 
-        <input
-          value={userFirstName}
-          onChange={(e) => setUserFirstName(e.target.value)}
-          type="text"
-          id="first name"
-          placeholder="نام"
-        />
+          <input
+            value={userFirstName}
+            onChange={(e) => setUserFirstName(e.target.value)}
+            type="text"
+            id="first name"
+            placeholder="نام"
+          />
 
-        <input
-          value={userLastName}
-          onChange={(e) => setUserLastName(e.target.value)}
-          type="text"
-          id="last name"
-          placeholder="نام خانوادگی"
-        />
+          <input
+            value={userLastName}
+            onChange={(e) => setUserLastName(e.target.value)}
+            type="text"
+            id="last name"
+            placeholder="نام خانوادگی"
+          />
 
-        <input
-          type="email"
-          value={userEmail}
-          onChange={(e) => emailRegexHandle(e)}
-          placeholder="ایمیل"
-        />
-        {userEmailAlert ? (
-          <p className="alert">لطفا ایمیل خود را صحیح وارد نمایید</p>
-        ) : null}
+          <input
+            type="email"
+            value={userEmail}
+            onChange={(e) => emailRegexHandle(e)}
+            placeholder="ایمیل"
+          />
+          {userEmailAlert ? (
+            <p className="alert">لطفا ایمیل خود را صحیح وارد نمایید</p>
+          ) : null}
 
-        <input
-          value={userPhoneNumber}
-          onChange={(e) => phonNumberRegexHandle(e)}
-          type="text"
-          id="phone nember"
-          placeholder="تلفن همراه"
-        />
-        {userPhoneNumberAlert ? (
-          <p className="alert">لطفا شماره تلفن صحیح وارد نمایید</p>
-        ) : null}
+          <input
+            value={userPhoneNumber}
+            onChange={(e) => phonNumberRegexHandle(e)}
+            type="text"
+            id="phone nember"
+            placeholder="تلفن همراه"
+          />
+          {userPhoneNumberAlert ? (
+            <p className="alert">لطفا شماره تلفن صحیح وارد نمایید</p>
+          ) : null}
 
-        <input
-          value={userPassword}
-          onChange={(e) => passwordRegexHandle(e)}
-          type="password"
-          placeholder="رمز عبور"
-        />
+          <input
+            value={userPassword}
+            onChange={(e) => passwordRegexHandle(e)}
+            type="password"
+            placeholder="رمز عبور"
+          />
 
-        {userPasswordAlert ? (
-          <p className="alert">رمز عبورتان بیش از 5 کاراکتر باشد</p>
-        ) : null}
+          {userPasswordAlert ? (
+            <p className="alert">رمز عبورتان بیش از 5 کاراکتر باشد</p>
+          ) : null}
 
-        <input onChange={handleImageUpload} type="file" />
-        <div className="formBtns">
-          <div onClick={() => loggingHandle()} className="sw redza deded">
-            <LoginIcon className="rerdza ehyrt" style={{ fontSize: 35 }} />
+          <input onChange={handleImageUpload} type="file" />
+          <div className="formBtns">
+            <div onClick={() => loggingHandle()} className="sw redza deded">
+              <LoginIcon className="rerdza ehyrt" style={{ fontSize: 35 }} />
+            </div>
+            <div onClick={() => resetFormLoginHandle()} className="sw redweza">
+              <ClearOutlinedIcon className="rerdza" style={{ fontSize: 35 }} />
+            </div>
           </div>
-          <div onClick={() => resetFormLoginHandle()} className="sw redweza">
-            <ClearOutlinedIcon className="rerdza" style={{ fontSize: 35 }} />
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 }

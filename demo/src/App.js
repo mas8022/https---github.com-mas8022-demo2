@@ -40,7 +40,7 @@ function App() {
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("login", JSON.stringify(true));
+    localStorage.setItem("login", JSON.stringify(flagLog));
   }, [flagLog]);
 
   useEffect(() => {
