@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Navbar.css";
 import "./Navbar-media.css";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -9,13 +9,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import LoginIcon from "@mui/icons-material/Login";
 import { NavLink } from "react-router-dom";
+import context from "../../ContextSite";
 
 export default function Navbar() {
+  let navContext = useContext(context);
   const [sidebarFlag, setSidebarFlag] = useState(false);
-
   const scrollUpSite = () => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -39,15 +41,30 @@ export default function Navbar() {
         </div>
 
         <ul>
-          <NavLink
-            className={(link) =>
-              link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
-            }
-            to="/profile"
-            onClick={() => scrollUpSite()}
-          >
-            پروفایل
-          </NavLink>
+          {navContext.flagLog ? (
+            <NavLink
+              to="/profile"
+              className={(link) =>
+                link.isActive
+                  ? "link navRoutes navRouteActive"
+                  : "link navRoutes"
+              }
+              onClick={() => scrollUpSite()}
+            >
+              پروفایل
+            </NavLink>
+          ) : (
+            <NavLink
+              className="link navRoutes"
+              onClick={() => {
+                scrollUpSite();
+                navContext.setShowLogin(true);
+              }}
+            >
+              ثبت نام
+            </NavLink>
+          )}
+
           <NavLink
             className={(link) =>
               link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
@@ -102,18 +119,31 @@ export default function Navbar() {
 
       <div className={sidebarFlag ? "sideBar sideBarActive" : "sideBar"}>
         <ul className="sidebarNav">
-          <NavLink
-            className={(link) =>
-              link.isActive ? "link sidebarRouteActive" : "link"
-            }
-            to="/profile"
-            onClick={() => scrollUpSite()}
-          >
-            <li>
-              پروفایل
-              <AccountCircleIcon className="aaa" style={{ fontSize: 30 }} />
-            </li>
-          </NavLink>
+          {navContext.flagLog ? (
+            <NavLink
+              to="/profile"
+              className={(link) =>
+                link.isActive ? "link sidebarRouteActive" : "link"
+              }
+              onClick={() => scrollUpSite()}
+            >
+              <li>
+                پروفایل
+                <AccountCircleIcon className="aaa" style={{ fontSize: 30 }} />
+              </li>
+            </NavLink>
+          ) : (
+            <NavLink
+              className="link sidebarRouteActive"
+              onClick={() => navContext.setShowLogin(true)}
+            >
+              <li>
+                ثبت نام
+                <LoginIcon className="aaa" style={{ fontSize: 30 }} />
+              </li>
+            </NavLink>
+          )}
+
           <NavLink
             className={(link) =>
               link.isActive ? "link sidebarRouteActive" : "link"

@@ -1,0 +1,22 @@
+@media screen and (max-width: 800px) {
+  .login form {
+    width: 68%;
+  }
+  .existLogBtn {
+    right: 19%;
+  }
+}
+@media screen and (max-width: 540px) {
+  .login form {
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 484px) {
+  .login form {
+    width: 78%;
+    padding: 2rem 3rem;
+  }
+  .existLogBtn {
+    right: 13%;
+  }
+}

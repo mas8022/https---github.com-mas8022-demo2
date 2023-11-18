@@ -64,8 +64,8 @@ export default function ProductSlider({array}) {
 
   return (
     <Slider {...sliderSettings}>
-      {array.slice(0, 9).map((item) => (
-        <div className="newProducts">
+      {array.slice(0, 9).map((item, index) => (
+        <div key={index} className="newProducts">
           <div className="grdcd" style={{ background: `url('${item.image}')` }}></div>
           <div className="newProductDetails">
             <h2>{item.name}</h2>

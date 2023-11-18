@@ -3,7 +3,6 @@ import "./ProductFlex.css";
 import "./ProductFlex-media.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AOS from "aos";
-import "aos/dist/aos.css";
 
 export default function ProductFlex({ info, mode }) {
   useEffect(() => {
@@ -16,9 +15,9 @@ export default function ProductFlex({ info, mode }) {
   return (
     <div className="productFlex">
       {info
-        ? info.slice(0, 8).map((item) => {
-            return (
+        ? info.slice(0, 8).map((item, index) => 
               <div
+              key={index}
                 data-aos="fade-up"
                 className={mode === "add" ? "productCard" : "productCard dwhwe"}
                 style={{ background: `url('${item.image}')` }}
@@ -38,8 +37,7 @@ export default function ProductFlex({ info, mode }) {
                   )}
                 </div>
               </div>
-            );
-          })
+          )
         : null}
     </div>
   );

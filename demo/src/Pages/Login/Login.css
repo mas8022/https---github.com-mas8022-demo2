@@ -1,0 +1,70 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 1500;
+  background: url("../../../public/images/112605.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 7rem 0 5rem 0;
+  visibility: hidden;
+  opacity: 0%;
+  transition: all linear 0.3s;
+}
+.login form {
+  width: 50%;
+  height: auto;
+  background: var(--second-color);
+  margin: 0 auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+.login h4 {
+  font-size: 4rem;
+  color: var(--first-color);
+}
+.login select,
+.login input {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 10px;
+  padding: 0 1.5rem;
+  direction: rtl;
+  font-size: 1.8rem;
+  font-family: system-ui;
+  border: 0;
+  padding-bottom: 4px;
+}
+.deded {
+  background: var(--first-color);
+}
+.ehyrt {
+  color: green;
+}
+.alert {
+  color: red;
+  font-size: 1.5rem;
+  font-family: system-ui;
+  text-shadow: 0px 0px 1px var(--shadow-color);
+}
+.existLogBtn {
+  color: red;
+  position: absolute;
+  font-size: 50px;
+  right: 27%;
+  cursor: pointer;
+}
+
+.existLogBtn:active {
+  scale: 80%;
+}
+
+.loginActive {
+  visibility: visible;
+  opacity: 100%;
+}
