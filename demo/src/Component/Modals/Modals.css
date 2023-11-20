@@ -4,7 +4,7 @@
   position: fixed;
   backdrop-filter: blur(20px);
   top: 0px;
-  z-index: 1000;
+  z-index: 1600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
 }
 .loginModal {
   width: 55rem;
-  height: 40rem;
+  height: auto;
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px var(--shadow-color);
   display: flex;
@@ -80,6 +80,7 @@
   padding: 1rem;
 }
 .loginForm input {
+  direction: rtl;
   width: 70%;
   background-color: gray;
   height: 3rem;
@@ -88,6 +89,7 @@
   padding: 2px 1rem;
   transition: all linear 0.07s;
   color: var(--first-color);
+  margin-bottom: 0.5rem;
 }
 .loginForm input::placeholder {
   color: var(--first-color);
@@ -104,8 +106,25 @@
   display: block;
 }
 .colorClickFromActive{
-  background: rgba(14, 121, 14, 0.696);
+  background: #05d561;
 }
 .colorClickFromDeActive{
   background: rgba(113, 7, 7, 0.63);
+}
+.fdwqewe{
+  color: red;
+  align-self: end;
+  transition: all linear 0.3s;
+  cursor: pointer;
+}
+.fdwqewe:active{
+  scale: 95%;
+}
+.CloseBtnModal{
+  background: red;
+}
+.helpEditText{
+  font-size: 1.5rem;
+  color: var(--shadow-color);
+  margin-bottom: 2rem;
 }

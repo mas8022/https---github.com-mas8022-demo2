@@ -59,7 +59,7 @@ export default function Login() {
   };
 
   const passwordRegexHandle = (e) => {
-    if (e.target.value.length > 4 && e.target.value.length < 9) {
+    if (e.target.value.length > 4) {
       setUserPassword(e.target.value);
       setUserPasswordAlert(false);
     } else {

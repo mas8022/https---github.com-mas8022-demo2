@@ -63,7 +63,7 @@ export default function Profile() {
             «آقا» برای اشاره محترمانه به مرد، کاربرد دارد.
           </p>
 
-          <div className="editModalBtn">
+          <div onClick={() => profContext.setCloseLoginModal(true)} className="editModalBtn">
             <EditIcon style={{ fontSize: 30 }} />
           </div>
         </div>
