@@ -63,19 +63,13 @@ export default function SiteModals() {
   }, [findPassHelp]);
 
   useEffect(() => {
-    if (
-      contextInfo.allUserTr.length !== 0 &&
-      contextInfo.allUserTr !== undefined
-    ) {
-      setEditLoader(false);
-      let ssd = contextInfo.allUserTr.find((user) => {
-        return user.userPassword === findPassHelp;
-      });
-      setFindUser(ssd);
+    setEditLoader(false);
+    if (contextInfo.allUserTr) {
+      setFindUser(
+        contextInfo.allUserTr.find((user) => user.userPassword === findPassHelp)
+      );
     }
   }, [contextInfo.allUserTr]);
-
-
 
   useEffect(() => {
     if (findUser !== undefined) {
