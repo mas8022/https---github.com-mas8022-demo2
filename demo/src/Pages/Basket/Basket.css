@@ -42,4 +42,6 @@
 .allCost {
     font-size: 2rem;
     color: var(--shadow-color);
+    display: flex;
+    /* flex-direction: row-reverse; */
 }

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ProductSlider.css";
 import Slider from "react-slick";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import context from "../../ContextSite";
 
-export default function ProductSlider({array}) {
+export default function ProductSlider({ array }) {
+  let contextProductSlider = useContext(context);
+
   const sliderSettings = {
     infinite: true,
     speed: 500,
@@ -48,7 +51,7 @@ export default function ProductSlider({array}) {
         settings: {
           slidesToShow: 1,
           centerMode: true,
-          centerPadding: '100'
+          centerPadding: "100",
         },
       },
       {
@@ -56,7 +59,7 @@ export default function ProductSlider({array}) {
         settings: {
           slidesToShow: 1,
           centerMode: true,
-          centerPadding: '90'
+          centerPadding: "90",
         },
       },
     ],
@@ -65,16 +68,31 @@ export default function ProductSlider({array}) {
   return (
     <Slider {...sliderSettings}>
       {array.slice(0, 9).map((item, index) => (
-        <div key={index} className="newProducts">
-          <div className="grdcd" style={{ background: `url('${item.image}')` }}></div>
+        <div key={index} data-aos="fade-left" className="newProducts">
+          <div
+            className="grdcd"
+            style={{ background: `url('${item.image}')` }}
+          ></div>
           <div className="newProductDetails">
             <h2>{item.name}</h2>
             <p>{item.price}تومان</p>
             <div className="addBtnNewProductDiv">
-              <div className="tder">
+              <div
+                onClick={() =>
+                  contextProductSlider.setProductsFav((p) => [...p, item])
+                }
+                className="tder"
+              >
                 <FavoriteIcon style={{ fontSize: 25 }} className="tderhg" />
               </div>
-              <div className="addBtnNewProduct">افزودن به سبد</div>
+              <div
+                onClick={() =>
+                  contextProductSlider.setProductsAdd((p) => [...p, item])
+                }
+                className="addBtnNewProduct"
+              >
+                افزودن به سبد
+              </div>
             </div>
           </div>
         </div>

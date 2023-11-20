@@ -4,6 +4,7 @@ import Profile from './Pages/Profile/Profile'
 import Favorites from './Pages/Favorites/Favorites'
 import Basket from './Pages/Basket/Basket'
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import Product from "./Pages/Product/Product";
 
 const routesArray = [
     {path: '/', element: <Home/>},
@@ -12,6 +13,7 @@ const routesArray = [
     {path: '/favorites', element: <Favorites/>},
     {path: '/basket', element: <Basket/>},
     {path: '/about', element: <AboutUs/>},
+    {path: '/product', element: <Product/>},
 ]
 
 export default routesArray;

@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import InventoryIcon from "@mui/icons-material/Inventory";
 import HomeIcon from "@mui/icons-material/Home";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import LoginIcon from "@mui/icons-material/Login";
@@ -28,7 +29,7 @@ export default function Navbar() {
           <SearchIcon style={{ fontSize: 36 }} className="searchIcon" />
           <input
             type="text"
-            placeholder="کالا مورد نظرتان را جستجو کنید...؟"
+            placeholder="کالا مورد نظرتان را جستجو کنید"
             list="dataList"
           />
           <datalist id="dataList">
@@ -100,7 +101,16 @@ export default function Navbar() {
             to="/basket"
             onClick={() => scrollUpSite()}
           >
-            خرید
+            سبد خرید
+          </NavLink>
+          <NavLink
+            className={(link) =>
+              link.isActive ? "link navRoutes navRouteActive" : "link navRoutes"
+            }
+            to="/product"
+            onClick={() => scrollUpSite()}
+          >
+            محصولات
           </NavLink>
           <NavLink
             className={(link) =>
@@ -188,8 +198,20 @@ export default function Navbar() {
             onClick={() => scrollUpSite()}
           >
             <li>
-              خرید
+              سبد خرید
               <LocalMallIcon className="aaa" style={{ fontSize: 30 }} />
+            </li>
+          </NavLink>
+          <NavLink
+            className={(link) =>
+              link.isActive ? "link sidebarRouteActive" : "link"
+            }
+            to="/product"
+            onClick={() => scrollUpSite()}
+          >
+            <li>
+              محصولات
+              <InventoryIcon className="aaa" style={{ fontSize: 30 }} />
             </li>
           </NavLink>
           <NavLink

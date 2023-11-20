@@ -10,6 +10,7 @@ import context from "./ContextSite";
 import { useEffect, useState } from "react";
 import Login from "./Pages/Login/Login";
 import SiteModals from "./Component/Modals/Modals";
+import ImagesHomeWelcome from "./DataBase";
 
 function App() {
   let routes = useRoutes(routesArray);
@@ -39,6 +40,14 @@ function App() {
       ? allUserTr
       : JSON.parse(localStorage.getItem("allUserTr"));
   });
+  const [productsAdd, setProductsAdd] = useState(() => {
+    const ssf = JSON.parse(localStorage.getItem("productsAdd"));
+    return ssf ? JSON.parse(localStorage.getItem("productsAdd")) : [];
+  });
+  const [productsFav, setProductsFav] = useState(() => {
+    const gdf = JSON.parse(localStorage.getItem("productsFav"));
+    return gdf ? JSON.parse(localStorage.getItem("productsFav")) : [];
+  });
 
   useEffect(() => {
     fetch("https://foodstore22-9bea4-default-rtdb.firebaseio.com/users.json")
@@ -66,9 +75,18 @@ function App() {
     localStorage.setItem("allUserTr", JSON.stringify(allUserTr));
   }, [allUserTr]);
 
+  useEffect(() => {
+    localStorage.setItem("productsAdd", JSON.stringify(productsAdd));
+  }, [productsAdd]);
+
+  useEffect(() => {
+    localStorage.setItem("productsAdd", JSON.stringify(productsFav));
+  }, [productsFav]);
+
   return (
     <context.Provider
       value={{
+        ImagesHomeWelcome,
         user,
         setUser,
         flagLog,
@@ -81,6 +99,10 @@ function App() {
         setAllUser,
         allUserTr,
         setAllUserTr,
+        productsAdd,
+        setProductsAdd,
+        productsFav,
+        setProductsFav,
       }}
     >
       <div className="App">
