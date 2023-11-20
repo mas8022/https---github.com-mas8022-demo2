@@ -48,9 +48,9 @@ export default function Profile() {
           <img
             className="ProfilePageImage"
             src={
-              profContext.user.userImage !== undefined
-                ? profContext.user.userImage
-                : "images/man-avatar-profile-vector-21372076.jpg"
+              !profContext.user.userImage
+                ? "https://img.freepik.com/premium-vector/man-profile-cartoon_18591-58482.jpg?w=360"
+                : profContext.user.userImage
             }
             alt="profileImage"
           />
@@ -63,7 +63,10 @@ export default function Profile() {
             «آقا» برای اشاره محترمانه به مرد، کاربرد دارد.
           </p>
 
-          <div onClick={() => profContext.setCloseLoginModal(true)} className="editModalBtn">
+          <div
+            onClick={() => profContext.setCloseLoginModal(true)}
+            className="editModalBtn"
+          >
             <EditIcon style={{ fontSize: 30 }} />
           </div>
         </div>

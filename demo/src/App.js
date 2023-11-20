@@ -84,7 +84,6 @@ function App() {
       }}
     >
       <div className="App">
-        
         <SiteModals />
         <Login />
         <Navbar />
