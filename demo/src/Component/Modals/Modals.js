@@ -26,45 +26,56 @@ export default function SiteModals() {
 
   useEffect(() => {
     if (
-      userFirstName &&
-      userLastName &&
-      userEmail &&
-      userPhoneNumber &&
-      userPassword &&
-      !setPhonNumberRegexFlag &&
-      !setEmailRegexFlag &&
-      !setPasswordRegexFlag
+      userFirstName !== "" &&
+      userLastName !== "" &&
+      userEmail !== "" &&
+      userPhoneNumber !== "" &&
+      userPassword !== "" &&
+      !phonNumberRegexFlag &&
+      !emailRegexFlag &&
+      !passwordRegexFlag
     ) {
-      console.log("f");
       setColorClickFromFlag(true);
+    } else {
+      setColorClickFromFlag(false);
     }
   }, [userFirstName, userLastName, userEmail, userPhoneNumber, userPassword]);
 
   useEffect(() => {
     if (findPassHelp === contextInfo.user.userPassword) {
       setEditLoader(true);
+
+      setUserFirstName(contextInfo.user.userFirstName);
+      setUserLastName(contextInfo.user.userLastName);
+      setUserEmail(contextInfo.user.userEmail);
+      setUserPhoneNumber(contextInfo.user.userPhoneNumber);
+      setUserPassword(contextInfo.user.userPassword);
+
       setPassEdit(true);
       if (contextInfo.allUserTr.length !== 0) {
         setEditLoader(false);
         let ssd = contextInfo.allUserTr.find((user) => {
           return user.userPassword === findPassHelp;
         });
-        console.log(ssd);
         setFindUser(ssd);
       }
     }
   }, [findPassHelp]);
 
   useEffect(() => {
-    if (contextInfo.allUserTr.length !== 0) {
+    if (
+      contextInfo.allUserTr.length !== 0 &&
+      contextInfo.allUserTr !== undefined
+    ) {
       setEditLoader(false);
       let ssd = contextInfo.allUserTr.find((user) => {
         return user.userPassword === findPassHelp;
       });
-      console.log(ssd);
       setFindUser(ssd);
     }
   }, [contextInfo.allUserTr]);
+
+
 
   useEffect(() => {
     if (findUser !== undefined) {
@@ -115,7 +126,6 @@ export default function SiteModals() {
     setUserEmail("");
     setUserPhoneNumber("");
     setUserPassword("");
-    setUserImage("");
     setEditLoader(false);
   };
 
@@ -125,8 +135,7 @@ export default function SiteModals() {
       userLastName &&
       userEmail &&
       userPhoneNumber &&
-      userPassword &&
-      userImage
+      userPassword
     ) {
       setEditLoader(true);
       let newUserEdit = {
@@ -146,7 +155,10 @@ export default function SiteModals() {
           method: "PUT",
           body: JSON.stringify(newUserEdit),
         }
-      ).then((res) => res.status < 400 && closeLoginModalHandler());
+      ).then((res) => {
+        res.status < 400 && closeLoginModalHandler();
+        window.location.reload();
+      });
     }
   };
 

@@ -116,6 +116,7 @@
   align-self: end;
   transition: all linear 0.3s;
   cursor: pointer;
+  margin-top: -2rem;
 }
 .fdwqewe:active{
   scale: 95%;

@@ -35,8 +35,8 @@ function App() {
   const [allUser, setAllUser] = useState([]);
   const [allUserTr, setAllUserTr] = useState(() => {
     const eee = JSON.parse(localStorage.getItem("allUserTr"));
-    return eee === null || eee === undefined
-      ? false
+    return eee === undefined
+      ? allUserTr
       : JSON.parse(localStorage.getItem("allUserTr"));
   });
 
