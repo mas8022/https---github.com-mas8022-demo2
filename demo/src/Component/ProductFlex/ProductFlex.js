@@ -4,8 +4,9 @@ import "./ProductFlex-media.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AOS from "aos";
 import context from "../../ContextSite";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-export default function ProductFlex({ info, mode }) {
+export default function ProductFlex({ info, mode, option }) {
   let contextProductFlex = useContext(context);
 
   useEffect(() => {
@@ -14,7 +15,24 @@ export default function ProductFlex({ info, mode }) {
       offset: 50,
     });
   }, []);
-
+  const reloadAndDeleteProductAddedHandle = (item) => {
+    contextProductFlex.setProductsAdd(
+      contextProductFlex.productsAdd.filter(
+        (product) => product.name !== item.name
+      )
+    );
+  };
+  const reloadAndDeleteProductHandle = (item) => {
+    contextProductFlex.setProductsFav(
+      contextProductFlex.productsFav.filter(
+        (product) => product.name !== item.name
+      )
+    );
+  };
+  const reloadAndSetProductHandle = (item) => {
+    contextProductFlex.setProductsFav((p) => [...p, item]);
+    window.location.reload();
+  };
   return (
     <div className="productFlex">
       {info
@@ -26,10 +44,31 @@ export default function ProductFlex({ info, mode }) {
               style={{ background: `url('${item.image}')` }}
             >
               <div className="productTop">
+                {option === "deleteAdded" && (
+                  <div
+                    onClick={() => reloadAndDeleteProductAddedHandle(item)}
+                    className="deleteProductBtn"
+                  >
+                    <HighlightOffIcon
+                      style={{ fontSize: 30 }}
+                      className="tde"
+                    />
+                  </div>
+                )}
+                {option === "delete" && (
+                  <div
+                    onClick={() => reloadAndDeleteProductHandle(item)}
+                    className="deleteProductBtn"
+                  >
+                    <HighlightOffIcon
+                      style={{ fontSize: 30 }}
+                      className="tde"
+                    />
+                  </div>
+                )}
+
                 <div
-                  onClick={() =>
-                    contextProductFlex.setProductsFav((p) => [...p, item])
-                  }
+                  onClick={() => reloadAndSetProductHandle(item)}
                   className="trer"
                 >
                   <FavoriteIcon style={{ fontSize: 25 }} className="tde" />
@@ -40,9 +79,10 @@ export default function ProductFlex({ info, mode }) {
                 <p className="priceProduct">{item.price}تومان</p>
                 {mode === "add" ? (
                   <div
-                    onClick={() =>
-                      contextProductFlex.setProductsAdd((p) => [...p, item])
-                    }
+                    onClick={() => {
+                      contextProductFlex.setProductsAdd((p) => [...p, item]);
+                      window.location.reload();
+                    }}
                     className="addProduct"
                   >
                     افزودن به سبد

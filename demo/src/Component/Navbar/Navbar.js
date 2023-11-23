@@ -17,8 +17,13 @@ import context from "../../ContextSite";
 export default function Navbar() {
   let navContext = useContext(context);
   const [sidebarFlag, setSidebarFlag] = useState(false);
+
   const scrollUpSite = () => {
     window.scrollTo(0, 0);
+  };
+
+  const searchBtnHandle = () => {
+    window.location.pathname = `/showProduct/:${navContext.searchValue}`;
   };
 
   return (
@@ -26,18 +31,24 @@ export default function Navbar() {
       <div className="navbar">
         <div className="logo"></div>
         <div className="searchBar">
-          <SearchIcon style={{ fontSize: 36 }} className="searchIcon" />
+          <SearchIcon
+            onClick={() => searchBtnHandle()}
+            style={{ fontSize: 36 }}
+            className="searchIcon"
+          />
           <input
+            value={navContext.searchValue}
+            onChange={(e) => navContext.setSearchValue(e.target.value)}
             type="text"
             placeholder="کالا مورد نظرتان را جستجو کنید"
             list="dataList"
           />
           <datalist id="dataList">
-            <option>fast food</option>
-            <option>hot food</option>
-            <option>ice food</option>
-            <option>cold food</option>
-            <option>favorite food</option>
+            {navContext.ImagesHomeWelcome
+              ? navContext.ImagesHomeWelcome.map((item, index) => (
+                  <option key={index}>{item.name}</option>
+                ))
+              : null}
           </datalist>
         </div>
 

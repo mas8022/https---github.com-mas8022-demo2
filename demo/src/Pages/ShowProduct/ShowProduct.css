@@ -1,0 +1,12 @@
+.showProduct{
+    width: 100%;
+    height: 100vh;
+    padding: 8rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background: url('https://img.freepik.com/premium-vector/paper-art-background-vector-illustration_485157-309.jpg');
+}

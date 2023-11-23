@@ -95,13 +95,29 @@ export default function Login() {
       userImage
     ) {
       setLoaderProf(true);
-      fetch(
-        "https://foodstore22-9bea4-default-rtdb.firebaseio.com/users.json",
-        {
-          method: "POST",
-          body: JSON.stringify(newUser),
-        }
-      )
+      fetch("https://parseapi.back4app.com/classes/users", {
+        method: "POST",
+        headers: {
+          "X-Parse-Application-Id": "SJPABe5OJHZ106zwv8Sfc79oJZz7oUR8bndbVFiC",
+          "X-Parse-REST-API-Key": "2IxFijYb4hbFqjRhrrQs3enMpax87qgSUKixgOSY",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: "A string",
+          email: "A string",
+          userSex,
+          userEmail,
+          userFirstName,
+          userPhoneNumber,
+          userLastName,
+          userPassword,
+          userImage,
+          phoneNumber: "A string",
+          old: "A string",
+          sex: "A string",
+          name: "A string",
+        }),
+      })
         .then((res) => {
           console.log(res);
           if (res.status < 400) {
@@ -109,7 +125,7 @@ export default function Login() {
             logContext.setShowLogin(false);
             logContext.setUser(newUser);
             resetFormLoginHandle();
-            setLoaderProf(false)
+            setLoaderProf(false);
           } else {
             alert("لطفا به وی پی ان قوی تر متصل شوید");
           }

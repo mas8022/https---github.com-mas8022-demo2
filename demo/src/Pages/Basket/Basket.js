@@ -3,6 +3,7 @@ import "./Basket.css";
 import "./Basket-media.css";
 import ProductFlex from "../../Component/ProductFlex/ProductFlex";
 import context from "../../ContextSite";
+import IsExistProduct from "../../Component/IsExistProduct/IsExistProduct";
 
 export default function Basket() {
   let contextBasket = useContext(context);
@@ -16,23 +17,32 @@ export default function Basket() {
   }, [allCost]);
 
   useEffect(() => {
-    setAllCost(0)
+    setAllCost(0);
     contextBasket.productsAdd.map((item) =>
       setAllCost((p) => Number(p) + Number(item.price))
     );
-  }, []);
-
-  useEffect(() => {
-    console.log(allCost);
-  }, [allCost]);
+  }, [contextBasket.productsAdd]);
 
   return (
     <div className="basket">
-      <div className="buyDiv">
-        <div className="buyBtn">خرید</div>
-        <p className="allCost"><span>تومان</span><span>{allCost}</span></p>
-      </div>
-      <ProductFlex mode="number" info={contextBasket.productsAdd} />
+      {contextBasket.productsAdd.length > 0 ? (
+        <>
+          <div className="buyDiv">
+            <div className="buyBtn">خرید</div>
+            <p className="allCost">
+              <span>تومان</span>
+              <span>{allCost}</span>
+            </p>
+          </div>
+          <ProductFlex
+            option="deleteAdded"
+            mode="number"
+            info={contextBasket.productsAdd}
+          />
+        </>
+      ) : (
+        <IsExistProduct text={"کالایی در لیست خریدتان وجود ندارد"} />
+      )}
     </div>
   );
 }

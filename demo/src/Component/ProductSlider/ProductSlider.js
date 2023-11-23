@@ -64,7 +64,10 @@ export default function ProductSlider({ array }) {
       },
     ],
   };
-
+  const reloadAndSetProductHandle = (item) => {
+    contextProductSlider.setProductsFav((p) => [...p, item]);
+    window.location.reload();
+  };
   return (
     <Slider {...sliderSettings}>
       {array.slice(0, 9).map((item, index) => (
@@ -78,17 +81,16 @@ export default function ProductSlider({ array }) {
             <p>{item.price}تومان</p>
             <div className="addBtnNewProductDiv">
               <div
-                onClick={() =>
-                  contextProductSlider.setProductsFav((p) => [...p, item])
-                }
+                onClick={() => reloadAndSetProductHandle(item)}
                 className="tder"
               >
                 <FavoriteIcon style={{ fontSize: 25 }} className="tderhg" />
               </div>
               <div
-                onClick={() =>
-                  contextProductSlider.setProductsAdd((p) => [...p, item])
-                }
+                onClick={() => {
+                  contextProductSlider.setProductsAdd((p) => [...p, item]);
+                  window.location.reload();
+                }}
                 className="addBtnNewProduct"
               >
                 افزودن به سبد

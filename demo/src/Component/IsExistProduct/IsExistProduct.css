@@ -1,0 +1,22 @@
+.isExistProduct{
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.textDiv{
+    width: 50%;
+    height: 15rem;
+    border-radius: 20px;
+    border: 4px dotted gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+.textDiv p{
+    font-size: 3rem;
+    color: var(--shadow-color);
+    direction: rtl;
+}

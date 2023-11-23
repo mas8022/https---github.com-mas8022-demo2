@@ -22,7 +22,6 @@ export default function SiteModals() {
   const [findPassHelp, setFindPassHelp] = useState("");
   const [editLoader, setEditLoader] = useState(false);
   const [findUser, setFindUser] = useState([]);
-  const [findUserId, setFindUserId] = useState("");
 
   useEffect(() => {
     if (
@@ -52,9 +51,9 @@ export default function SiteModals() {
       setUserPassword(contextInfo.user.userPassword);
 
       setPassEdit(true);
-      if (contextInfo.allUserTr.length !== 0) {
+      if (contextInfo.allUser.length !== 0) {
         setEditLoader(false);
-        let ssd = contextInfo.allUserTr.find((user) => {
+        let ssd = contextInfo.allUser.find((user) => {
           return user.userPassword === findPassHelp;
         });
         setFindUser(ssd);
@@ -64,18 +63,12 @@ export default function SiteModals() {
 
   useEffect(() => {
     setEditLoader(false);
-    if (contextInfo.allUserTr) {
+    if (contextInfo.allUser) {
       setFindUser(
-        contextInfo.allUserTr.find((user) => user.userPassword === findPassHelp)
+        contextInfo.allUser.find((user) => user.userPassword === findPassHelp)
       );
     }
-  }, [contextInfo.allUserTr]);
-
-  useEffect(() => {
-    if (findUser !== undefined) {
-      setFindUserId(contextInfo.allUser.find((user) => user[1] === findUser));
-    }
-  }, [findUser]);
+  }, [contextInfo.allUser]);
 
   const emailRegexHandle = (e) => {
     if (emailRegex.test(e.target.value)) {
@@ -144,9 +137,15 @@ export default function SiteModals() {
       contextInfo.setUser(newUserEdit);
 
       fetch(
-        `https://foodstore22-9bea4-default-rtdb.firebaseio.com/users/${findUserId[0]}.json`,
+        `https://parseapi.back4app.com/classes/users/${findUser.objectId}`,
         {
           method: "PUT",
+          headers: {
+            "X-Parse-Application-Id":
+              "SJPABe5OJHZ106zwv8Sfc79oJZz7oUR8bndbVFiC",
+            "X-Parse-REST-API-Key": "2IxFijYb4hbFqjRhrrQs3enMpax87qgSUKixgOSY",
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(newUserEdit),
         }
       ).then((res) => {
@@ -295,8 +294,8 @@ export default function SiteModals() {
                 </p>
 
                 <input
-                  onChange={(e) => setFindPassHelp(e.target.value)}
                   value={findPassHelp}
+                  onChange={(e) => setFindPassHelp(e.target.value)}
                   className="passwordLoginForm"
                   type="password"
                   placeholder="رمز عبور"
