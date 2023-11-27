@@ -5,7 +5,7 @@ import InfoIcon from "@mui/icons-material/Info";
 export default function AboutUs() {
   return (
     <div className="about">
-      <InfoIcon className="AlertIconAboutPage" style={{ fontSize: 100 }} />
+      <InfoIcon data-aos="zoom-in" className="AlertIconAboutPage" style={{ fontSize: 100 }} />
       <p>
         طراحی سایت رستوران نکات خاص خود را دارد و برای اینکه یک طراحی سایت حرفه
         ای داشته باشید باید موارد ریز و درشت فراوانی را رعایت کنید. مهم ترین

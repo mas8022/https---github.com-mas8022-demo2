@@ -12,6 +12,7 @@ export default function Favorites() {
         <>
           <Title title={"غذاهای مورد علاقه شما"} />
           <ProductFlex
+          like={false}
             option="delete"
             mode="add"
             info={contextFavorites.productsFav}

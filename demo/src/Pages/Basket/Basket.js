@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Basket.css";
 import "./Basket-media.css";
 import ProductFlex from "../../Component/ProductFlex/ProductFlex";
@@ -7,19 +7,11 @@ import IsExistProduct from "../../Component/IsExistProduct/IsExistProduct";
 
 export default function Basket() {
   let contextBasket = useContext(context);
-  const [allCost, setAllCost] = useState(() => {
-    const cost = JSON.parse(localStorage.getItem("allCost"));
-    return cost ? JSON.parse(localStorage.getItem("allCost")) : 0;
-  });
 
   useEffect(() => {
-    localStorage.setItem("allCost", JSON.stringify(allCost));
-  }, [allCost]);
-
-  useEffect(() => {
-    setAllCost(0);
+    contextBasket.setAllCost(0);
     contextBasket.productsAdd.map((item) =>
-      setAllCost((p) => Number(p) + Number(item.price))
+      contextBasket.setAllCost((p) => Number(p) + Number(item.price))
     );
   }, [contextBasket.productsAdd]);
 
@@ -27,17 +19,18 @@ export default function Basket() {
     <div className="basket">
       {contextBasket.productsAdd.length > 0 ? (
         <>
-          <div className="buyDiv">
+          <div data-aos='fade-down' className="buyDiv">
             <div className="buyBtn">خرید</div>
             <p className="allCost">
               <span>تومان</span>
-              <span>{allCost}</span>
+              <span>{contextBasket.allCost}</span>
             </p>
           </div>
           <ProductFlex
             option="deleteAdded"
             mode="number"
             info={contextBasket.productsAdd}
+            like={true}
           />
         </>
       ) : (

@@ -19,6 +19,7 @@ export default function Product() {
 
       <Title title={"غذاهای اقتصادی"} />
       <ProductFlex
+        like={true}
         mode={"add"}
         info={contextProduct.ImagesHomeWelcome.slice(0, 4)}
       />

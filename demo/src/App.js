@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import Login from "./Pages/Login/Login";
 import SiteModals from "./Component/Modals/Modals";
 import ImagesHomeWelcome from "./DataBase";
-
+import AOS from "aos";
 function App() {
   let routes = useRoutes(routesArray);
   const [user, setUser] = useState(() => {
@@ -39,18 +39,18 @@ function App() {
   });
   const [productsAdd, setProductsAdd] = useState(() => {
     const sdfsd = JSON.parse(localStorage.getItem("productsAdd"));
-    const sdsddsfds = [];
-    const dfsdsddsajdfdf = new Set();
+    const sda = [];
+    const keySet = new Set();
     if (sdfsd) {
       sdfsd.forEach((obj) => {
         const key = obj.name;
-        if (!dfsdsddsajdfdf.has(key)) {
-          dfsdsddsajdfdf.add(key);
-          sdsddsfds.push(obj);
+        if (!keySet.has(key)) {
+          keySet.add(key);
+          sda.push(obj);
         }
       });
     }
-    return sdsddsfds ? sdsddsfds : [];
+    return sda ? sda : [];
   });
   const [productsFav, setProductsFav] = useState(() => {
     const gdf = JSON.parse(localStorage.getItem("productsFav"));
@@ -68,6 +68,12 @@ function App() {
     return uniqueObjects ? uniqueObjects : [];
   });
   const [searchValue, setSearchValue] = useState("");
+  const [allCost, setAllCost] = useState(() => {
+    const cost = JSON.parse(localStorage.getItem("allCost"));
+    return cost ? JSON.parse(localStorage.getItem("allCost")) : 0;
+  });
+  const [inputs, setInputs] = useState([]);
+  const [inputsTr, setInputsTr] = useState([]);
 
   useEffect(() => {
     fetch("https://parseapi.back4app.com/classes/users", {
@@ -97,6 +103,10 @@ function App() {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
+      AOS.init({
+        duration: 1000,
+        offset: 50,
+      });
   }, []);
 
   useEffect(() => {
@@ -119,6 +129,40 @@ function App() {
     localStorage.setItem("productsFav", JSON.stringify(productsFav));
   }, [productsFav]);
 
+  useEffect(() => {
+    localStorage.setItem("allCost", JSON.stringify(allCost));
+  }, [allCost]);
+
+  useEffect(() => {
+    const inputsArray = Object.entries(inputs).map(([key, value]) => ({
+      name: key,
+      quantity: value,
+    }));
+    if (inputsArray) {
+      productsAdd.forEach((item) => {
+        inputsArray.map((product) => {
+          if (product.name === item.name) {
+            product.name = item.price;
+          }
+        });
+      });
+      setInputsTr(inputsArray);
+    }
+  }, [inputs]);
+
+  useEffect(() => {
+    setAllCost(0)
+    const totalCost = inputsTr.map(item=>{
+      return item.quantity*item.name
+    })
+    const CalTotalCost = totalCost.reduce((prev, cur) => {
+      return prev + cur
+    },0)
+    setAllCost(CalTotalCost)
+    
+
+  }, [inputsTr]);
+
   return (
     <context.Provider
       value={{
@@ -139,6 +183,10 @@ function App() {
         setProductsFav,
         searchValue,
         setSearchValue,
+        allCost,
+        setAllCost,
+        inputs,
+        setInputs,
       }}
     >
       <div className="App">

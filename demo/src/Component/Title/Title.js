@@ -3,7 +3,7 @@ import './Title.css'
 
 export default function Title({title}) {
   return (
-    <div className="newProductSliderTitle"><span>{title}</span></div>
+    <div data-aos='fade-left' className="newProductSliderTitle"><span>{title}</span></div>
 
   )
 }

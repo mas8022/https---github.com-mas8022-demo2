@@ -1,6 +1,6 @@
 import React from "react";
 import "./Comments.css";
-import './Comments-media.css'
+import "./Comments-media.css";
 import Slider from "react-slick";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
@@ -39,7 +39,7 @@ export default function Comments() {
   };
 
   return (
-    <div className="comments">
+    <div data-aos="fade-down" className="comments">
       <Slider {...sliderSettings}>
         <div className="comment">
           <div

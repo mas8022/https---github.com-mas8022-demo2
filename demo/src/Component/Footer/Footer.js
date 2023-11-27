@@ -10,7 +10,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <div data-aos="fade-up" className="footer">
       <div className="footerContainer">
         <div className="topFooterContainer">
           <div className="socialMedia">

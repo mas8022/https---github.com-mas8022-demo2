@@ -3,6 +3,7 @@
     height: 5rem;
     direction: rtl;
     padding: 0 3rem;
+    margin-bottom: 2rem;
 }
 .newProductSliderTitle span{
     color: var(--third-color);

@@ -18,7 +18,7 @@ export default function ShowProduct() {
 
   return (
     <div className="showProduct">
-      <ProductFlex mode={"add"} info={[findProduct]} />
+      <ProductFlex like={true} mode={"add"} info={[findProduct]} />
     </div>
   );
 }
