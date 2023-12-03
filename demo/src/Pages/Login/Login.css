@@ -4,7 +4,7 @@
   position: fixed;
   z-index: 1500;
   background: url("../../../public/images/112605.jpg");
-  background-size: cover;
+  background-size: image;
   background-position: center;
   background-repeat: no-repeat;
   padding: 7rem 0 5rem 0;

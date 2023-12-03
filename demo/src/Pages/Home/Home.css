@@ -12,7 +12,7 @@
     height: 50rem;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-size: cover !important;
+    background-size: image !important;
 }
 .hhy{
     background: url('../../../public/images/1324855.jpg');
@@ -76,7 +76,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px -5px var(--shadow-color);
     background-position: center;
-    background-size: cover;
+    background-size: image;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;

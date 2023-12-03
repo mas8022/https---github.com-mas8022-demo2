@@ -6,7 +6,8 @@ import Basket from './Pages/Basket/Basket'
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Product from "./Pages/Product/Product";
 import ShowProduct from "./Pages/ShowProduct/ShowProduct";
-
+import CmsProduct from "./Pages/Cms/CmsProduct/CmsProduct";
+import CmsUsers from './Pages/Cms/CmsUsers/CmsUsers'
 const routesArray = [
     {path: '/', element: <Home/>},
     {path: '/profile', element: <Profile/>},
@@ -16,6 +17,8 @@ const routesArray = [
     {path: '/about', element: <AboutUs/>},
     {path: '/product', element: <Product/>},
     {path: '/showProduct/:food', element: <ShowProduct/>},
+    {path: '/cmsProduct', element: <CmsProduct/>},
+    {path: '/cmsUsers', element: <CmsUsers/>},
 ]
 
 export default routesArray;

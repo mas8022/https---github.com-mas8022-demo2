@@ -43,7 +43,7 @@ export default function Comments() {
       <Slider {...sliderSettings}>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -71,7 +71,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -99,7 +99,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -127,7 +127,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -155,7 +155,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -183,7 +183,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}
@@ -211,7 +211,7 @@ export default function Comments() {
         </div>
         <div className="comment">
           <div
-            className="commenterImage"
+            className="commenterimage"
             style={{
               background: `url(${"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg"})`,
             }}

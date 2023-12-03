@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Login.css";
 import "./Login-media.css";
 import LoginIcon from "@mui/icons-material/Login";
@@ -6,6 +6,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import context from "../../ContextSite";
 import Loader from "../../Component/Loader/Loader";
+
+/////////////////////////////////////
+////// admin pass = 1234 ////////////
+/////////////////////////////////////
 
 export default function Login() {
   const logContext = useContext(context);
@@ -120,7 +124,7 @@ export default function Login() {
       })
         .then((res) => {
           console.log(res);
-          if (res.status < 400) {
+          if (res.ok) {
             logContext.setFlagLog(true);
             logContext.setShowLogin(false);
             logContext.setUser(newUser);
@@ -136,7 +140,7 @@ export default function Login() {
     }
   };
 
-  const handleImageUpload = (event) => {
+  const handleimageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -147,6 +151,14 @@ export default function Login() {
 
     reader.readAsDataURL(file);
   };
+
+
+  useEffect(() => {
+    if (userPassword === "1234") {
+      window.location.pathname = '/cmsProduct'
+      logContext.setShowLogin(false)
+    }
+  },[userPassword])
 
   return (
     <>
@@ -165,7 +177,7 @@ export default function Login() {
             value={userSex}
             onChange={(e) => setUserSex(e.target.value)}
           >
-            <option value="man">آقای</option>
+            <option value="man">اقا</option>
             <option value="woman">خانم</option>
           </select>
 
@@ -217,7 +229,7 @@ export default function Login() {
             <p className="alert">رمز عبورتان بیش از 5 کاراکتر باشد</p>
           ) : null}
 
-          <input onChange={handleImageUpload} type="file" />
+          <input onChange={handleimageUpload} type="file" />
           <div className="formBtns">
             <div onClick={() => loggingHandle()} className="sw redza deded">
               <LoginIcon className="rerdza ehyrt" style={{ fontSize: 35 }} />

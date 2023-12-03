@@ -1,0 +1,171 @@
+api main route : 'http://localhost:4000/api/'
+
+----------------------------- users -----------------------------
+
+users subroute : /users
+
+##############
+
+GET ALL USERS :
+
+method : GET
+api route : /
+
+##############
+
+GET ONE USERS :
+
+method : GET
+api route : /:userToken
+
+##############
+
+LOGIN USER :
+
+method : GET
+api route : /login
+content-type: application/json
+body : { email, password }
+
+##############
+
+CREATE NEW USER ( SIGN UP )
+
+method : POST
+api route : /
+content-type: application/json
+body : { username, email, phone, password }
+
+##############
+
+CHANGE USER USERNAME
+
+method : PUT
+api route : /:token/username
+content-type: application/json
+body : { username }
+
+##############
+
+CHANGE USER EMAIL
+
+method : PUT
+api route : /:token/email
+content-type: application/json
+body : { email }
+
+
+##############
+
+CHANGE USER PHONE
+
+method : PUT
+api route : /:token/phone
+content-type: application/json
+body : { phone }
+
+
+##############
+
+CHANGE USER PASSWORD
+
+method : PUT
+api route : /:token/password
+content-type: application/json
+body : { password }
+
+##############
+
+CHANGE USER PROFILE
+
+method : PUT
+api route : /:token/profile
+content-type: application/json
+body : { profile }
+
+##############
+
+CHANGE USER ADDRESS
+
+method : PUT
+api route : /:token/address
+content-type: application/json
+body : { address }
+
+##############
+
+DELETE ONE USER
+
+method : DELETE
+api route : /:token
+
+
+----------------------------- products -----------------------------
+
+users subroute : /products
+
+##############
+
+GET ALL PRODUCTS :
+
+method : GET
+api route : /
+
+##############
+
+GET ONE PRODUCTS :
+
+method : GET
+api route : /:productID
+
+##############
+
+CREATE NEW PRODUCTS :
+
+method : POST
+api route : /
+content-type: application/json
+body : { name, price, count, cover }
+
+##############
+
+CHANGE PRODUCT NAME
+
+method : PUT
+api route : /:productID/name
+content-type: application/json
+body : { name }
+
+##############
+
+CHANGE PRODUCT PRICE
+
+method : PUT
+api route : /:productID/price
+content-type: application/json
+body : { price }
+
+##############
+
+CHANGE PRODUCT COUNT
+
+method : PUT
+api route : /:productID/count
+content-type: application/json
+body : { count }
+
+##############
+
+CHANGE PRODUCT COVER
+
+method : PUT
+api route : /:productID/cover
+content-type: application/json
+body : { cover }
+
+##############
+
+DELETE A PRODUCT
+
+method : DELETE
+api route : /:productID

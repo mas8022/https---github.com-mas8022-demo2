@@ -46,13 +46,13 @@ export default function Profile() {
 
         <div className="rightProfilePage">
           <img
-            className="ProfilePageImage"
+            className="ProfilePageimage"
             src={
-              !profContext.user.userImage
+              !profContext.user.userimage
                 ? "https://img.freepik.com/premium-vector/man-profile-cartoon_18591-58482.jpg?w=360"
-                : profContext.user.userImage
+                : profContext.user.userimage
             }
-            alt="profileImage"
+            alt="profileimage"
           />
           <p>
             مَرد، یک انسان بالغ نر است. عموماً پسری را که دوران بلوغ و نوجوانی

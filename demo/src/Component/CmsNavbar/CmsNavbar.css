@@ -1,0 +1,21 @@
+.cmsNavbar {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 10rem;
+  background: var(--second-color);
+}
+.cmsNavBarsBtn {
+  width: 16rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--first-color);
+  font-size: 2rem;
+}
+.cmsNavBarBtnActive{
+    border-bottom: 2px solid var(--first-color);
+}

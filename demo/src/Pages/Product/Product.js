@@ -11,21 +11,21 @@ export default function Product() {
   return (
     <div className="product">
       <Title title={"محبوب ترین غذاها"} />
-      <ProductSlider array={contextProduct.ImagesHomeWelcome} />
+      <ProductSlider array={contextProduct.imagesHomeWelcome} />
       <hr className="underLine" />
       <Title title={"جدید ترین غذاها"} />
-      <ProductSlider array={contextProduct.ImagesHomeWelcome} />
+      <ProductSlider array={contextProduct.imagesHomeWelcome} />
       <hr className="underLine" />
 
       <Title title={"غذاهای اقتصادی"} />
       <ProductFlex
         like={true}
         mode={"add"}
-        info={contextProduct.ImagesHomeWelcome.slice(0, 4)}
+        info={contextProduct.imagesHomeWelcome.slice(0, 4)}
       />
       <hr className="underLine" />
       <Title title={"پرفروش ترین غذاها"} />
-      <ProductSlider array={contextProduct.ImagesHomeWelcome} />
+      <ProductSlider array={contextProduct.imagesHomeWelcome} />
       <hr className="underLine" />
     </div>
   );

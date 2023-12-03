@@ -44,8 +44,8 @@ export default function Navbar() {
             list="dataList"
           />
           <datalist id="dataList">
-            {navContext.ImagesHomeWelcome
-              ? navContext.ImagesHomeWelcome.map((item, index) => (
+            {navContext.imagesHomeWelcome
+              ? navContext.imagesHomeWelcome.map((item, index) => (
                   <option key={index}>{item.name}</option>
                 ))
               : null}

@@ -10,7 +10,7 @@ export default function ShowProduct() {
   const [findProduct, setfindProduct] = useState([]);
 
   useEffect(() => {
-    let findProduct = contextShowProduct.ImagesHomeWelcome.find(
+    let findProduct = contextShowProduct.imagesHomeWelcome.find(
       (item) => item.name === Params.food.slice(1)
     );
     setfindProduct(findProduct);

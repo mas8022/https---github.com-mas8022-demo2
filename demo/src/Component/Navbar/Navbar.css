@@ -16,7 +16,7 @@
   height: 6rem;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: image !important;
   background: url("../../../public//images/\,.png");
 }
 .navbar ul {
@@ -127,7 +127,7 @@ datalist option {
   height: 8rem;
   background: url("../../../public//images/103-1038475_green-footer-png-jpg-stock-removebg-preview.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: image;
   background-position: center;
   margin-right: -18px;
 }

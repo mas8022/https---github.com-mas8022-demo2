@@ -3,7 +3,7 @@ import "./Home.css";
 import "./Home-media.css";
 import Slider from "react-slick";
 import ProductFlex from "../../Component/ProductFlex/ProductFlex";
-import ImagesHomeWelcome from "../../DataBase";
+import imagesHomeWelcome from "../../DataBase";
 import ProductSlider from "../../Component/ProductSlider/ProductSlider";
 import Comments from "../../Component/Comments/Comments";
 import Title from "../../Component/Title/Title";
@@ -53,13 +53,13 @@ export default function Home() {
         <div className="homeSelectionFoodSon jry">غذاهای ایرانی</div>
       </div>
       <hr />
-      <ProductFlex like={true} mode="add" info={ImagesHomeWelcome} />
+      <ProductFlex like={true} mode="add" info={imagesHomeWelcome} />
       <div className="dee"></div>
       <Title title={"جدید ترین خوراکی ها"} />
-      <ProductSlider array={ImagesHomeWelcome} />
+      <ProductSlider array={imagesHomeWelcome} />
       <div className="dee"></div>
       <Title title={"محبوب ترین خوراکی ها"} />
-      <ProductSlider array={ImagesHomeWelcome.slice(2)} />
+      <ProductSlider array={imagesHomeWelcome.slice(2)} />
       <div className="dee"></div>
       <Comments />
       <div className="dee"></div>

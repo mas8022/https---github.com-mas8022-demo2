@@ -13,7 +13,7 @@ export default function SiteModals() {
   const [userEmail, setUserEmail] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [userImage, setUserImage] = useState(undefined);
+  const [userimage, setUserimage] = useState(undefined);
   const [phonNumberRegexFlag, setPhonNumberRegexFlag] = useState(false);
   const [emailRegexFlag, setEmailRegexFlag] = useState(false);
   const [passwordRegexFlag, setPasswordRegexFlag] = useState(false);
@@ -131,7 +131,7 @@ export default function SiteModals() {
         userEmail,
         userPhoneNumber,
         userPassword,
-        userImage,
+        userimage,
       };
 
       contextInfo.setUser(newUserEdit);
@@ -155,12 +155,12 @@ export default function SiteModals() {
     }
   };
 
-  const handleImageUpload = (event) => {
+  const handleimageUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e) => {
       const imageDataUrl = e.target.result;
-      setUserImage(imageDataUrl);
+      setUserimage(imageDataUrl);
     };
     reader.readAsDataURL(file);
   };
@@ -241,7 +241,7 @@ export default function SiteModals() {
                 </p>
 
                 <input
-                  onChange={handleImageUpload}
+                  onChange={handleimageUpload}
                   className="passwordLoginForm"
                   type="file"
                   placeholder="set image"
@@ -284,7 +284,7 @@ export default function SiteModals() {
                     setUserEmail("");
                     setUserPhoneNumber("");
                     setUserPassword("");
-                    setUserImage("");
+                    setUserimage("");
                   }}
                   className="fdwqewe"
                   style={{ fontSize: 50 }}

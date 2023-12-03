@@ -10,7 +10,7 @@ import context from "./ContextSite";
 import { useEffect, useState } from "react";
 import Login from "./Pages/Login/Login";
 import SiteModals from "./Component/Modals/Modals";
-import ImagesHomeWelcome from "./DataBase";
+import imagesHomeWelcome from "./DataBase";
 import AOS from "aos";
 function App() {
   let routes = useRoutes(routesArray);
@@ -74,8 +74,18 @@ function App() {
   });
   const [inputs, setInputs] = useState([]);
   const [inputsTr, setInputsTr] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    fetch("http://localhost:4000/api/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+
+    fetch("http://localhost:4000/api/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+
     fetch("https://parseapi.back4app.com/classes/users", {
       method: "GET",
       headers: {
@@ -92,7 +102,7 @@ function App() {
       })
 
       .then((data) => {
-        if (data) {
+        if (data.length > 0) {
           localStorage.setItem(
             "allUsers",
             JSON.parse(Object.entries(data)[0][1])
@@ -103,10 +113,10 @@ function App() {
       .catch((error) => {
         console.error("There was a problem with the fetch operation:", error);
       });
-      AOS.init({
-        duration: 1000,
-        offset: 50,
-      });
+    AOS.init({
+      duration: 1000,
+      offset: 50,
+    });
   }, []);
 
   useEffect(() => {
@@ -151,22 +161,20 @@ function App() {
   }, [inputs]);
 
   useEffect(() => {
-    setAllCost(0)
-    const totalCost = inputsTr.map(item=>{
-      return item.quantity*item.name
-    })
+    setAllCost(0);
+    const totalCost = inputsTr.map((item) => {
+      return item.quantity * item.name;
+    });
     const CalTotalCost = totalCost.reduce((prev, cur) => {
-      return prev + cur
-    },0)
-    setAllCost(CalTotalCost)
-    
-
+      return prev + cur;
+    }, 0);
+    setAllCost(CalTotalCost);
   }, [inputsTr]);
 
   return (
     <context.Provider
       value={{
-        ImagesHomeWelcome,
+        imagesHomeWelcome,
         user,
         setUser,
         flagLog,
@@ -187,6 +195,8 @@ function App() {
         setAllCost,
         inputs,
         setInputs,
+        products,
+        users,
       }}
     >
       <div className="App">
