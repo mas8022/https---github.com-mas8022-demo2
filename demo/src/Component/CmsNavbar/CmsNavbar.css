@@ -19,3 +19,11 @@
 .cmsNavBarBtnActive{
     border-bottom: 2px solid var(--first-color);
 }
+.dsfsd {
+  position: fixed;
+  top: 0.5rem;
+  left: 2rem;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+}

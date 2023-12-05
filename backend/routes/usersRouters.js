@@ -43,11 +43,11 @@ usersRouter.post("/", (req, res) => {
     });
 });
 
-usersRouter.put("/:token", (req, res) => {
-    const token = req.params.token
+usersRouter.put("/:id", (req, res) => {
+    const id = req.params.id
     const body = Object.entries(req.body);
 
-    const sqlQuery = `UPDATE users SET ${body.map(param => typeof param[1] === 'number' ? `${param[0]}=${param[1]}` : `${param[0]}='${param[1]}'`)} WHERE token='${token}'`;
+    const sqlQuery = `UPDATE users SET ${body.map(param => typeof param[1] === 'number' ? `${param[0]}=${param[1]}` : `${param[0]}='${param[1]}'`)} WHERE id=${id}`;
 
     console.log(sqlQuery);
 

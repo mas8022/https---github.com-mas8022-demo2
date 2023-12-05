@@ -2,7 +2,7 @@
   width: 100%;
   height: 41rem;
   background: url("../../../public/images/bg\,f8f8f8-flat\,750x\,075\,f-pad\,750x1000\,f8f8f8.u2.jpg");
-  background-size: image;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   padding: 2rem 4rem;
@@ -34,7 +34,7 @@
 .commenterimage {
   background-position: center !important;
   background-repeat: no-repeat !important;
-  background-size: image !important;
+  background-size: cover !important;
 }
 .commenterName {
   font-size: 1.7rem;

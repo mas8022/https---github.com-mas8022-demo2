@@ -12,7 +12,7 @@
     height: 50rem;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-size: image !important;
+    background-size: cover !important;
 }
 .hhy{
     background: url('../../../public/images/1324855.jpg');

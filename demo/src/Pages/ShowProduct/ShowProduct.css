@@ -7,6 +7,6 @@
     justify-content: center;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    background-size: image !important;
+    background-size: cover !important;
     background: url('../../../public/images/paper-art-background-vector-illustration_485157-309.avif');
 }

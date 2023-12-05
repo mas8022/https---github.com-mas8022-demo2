@@ -4,16 +4,15 @@ import "./Modal-media.css";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import context from "../../ContextSite";
 import Loader from "../Loader/Loader";
+import Resizer from "react-image-file-resizer";
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export default function SiteModals() {
   let contextInfo = useContext(context);
-  const [userFirstName, setUserFirstName] = useState("");
-  const [userLastName, setUserLastName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userimage, setUserimage] = useState(undefined);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [image, setImage] = useState(null);
   const [phonNumberRegexFlag, setPhonNumberRegexFlag] = useState(false);
   const [emailRegexFlag, setEmailRegexFlag] = useState(false);
   const [passwordRegexFlag, setPasswordRegexFlag] = useState(false);
@@ -25,11 +24,9 @@ export default function SiteModals() {
 
   useEffect(() => {
     if (
-      userFirstName !== "" &&
-      userLastName !== "" &&
-      userEmail !== "" &&
-      userPhoneNumber !== "" &&
-      userPassword !== "" &&
+      firstName !== "" &&
+      lastName !== "" &&
+      email !== "" &&
       !phonNumberRegexFlag &&
       !emailRegexFlag &&
       !passwordRegexFlag
@@ -38,44 +35,42 @@ export default function SiteModals() {
     } else {
       setColorClickFromFlag(false);
     }
-  }, [userFirstName, userLastName, userEmail, userPhoneNumber, userPassword]);
+  }, [firstName, lastName, email]);
 
   useEffect(() => {
-    if (findPassHelp === contextInfo.user.userPassword) {
+    if (findPassHelp === contextInfo.user.password) {
       setEditLoader(true);
 
-      setUserFirstName(contextInfo.user.userFirstName);
-      setUserLastName(contextInfo.user.userLastName);
-      setUserEmail(contextInfo.user.userEmail);
-      setUserPhoneNumber(contextInfo.user.userPhoneNumber);
-      setUserPassword(contextInfo.user.userPassword);
+      setFirstName(contextInfo.user.firstName);
+      setLastName(contextInfo.user.lastName);
+      setEmail(contextInfo.user.email);
 
       setPassEdit(true);
-      if (contextInfo.allUser.length !== 0) {
+      if (contextInfo.users.length !== 0) {
         setEditLoader(false);
-        let ssd = contextInfo.allUser.find((user) => {
-          return user.userPassword === findPassHelp;
+        let ssd = contextInfo.users.find((user) => {
+          return user.password === findPassHelp;
         });
-        setFindUser(ssd);
+        setFindUser(ssd.id);
       }
     }
   }, [findPassHelp]);
 
   useEffect(() => {
     setEditLoader(false);
-    if (contextInfo.allUser) {
+    if (contextInfo.users) {
       setFindUser(
-        contextInfo.allUser.find((user) => user.userPassword === findPassHelp)
+        contextInfo.users.find((user) => user.password === findPassHelp)
       );
     }
-  }, [contextInfo.allUser]);
+  }, [contextInfo.users]);
 
   const emailRegexHandle = (e) => {
     if (emailRegex.test(e.target.value)) {
-      setUserEmail(e.target.value);
+      setEmail(e.target.value);
       setEmailRegexFlag(false);
     } else {
-      setUserEmail(e.target.value);
+      setEmail(e.target.value);
       setEmailRegexFlag(true);
     }
     if (!e.target.value) {
@@ -83,86 +78,61 @@ export default function SiteModals() {
     }
   };
 
-  const phonNumberRegexHandle = (e) => {
-    if (!isNaN(e.target.value)) {
-      setUserPhoneNumber(e.target.value);
-      setPhonNumberRegexFlag(false);
-    } else {
-      setPhonNumberRegexFlag(true);
-      setUserPhoneNumber(e.target.value);
-    }
-  };
-
-  const passwordRegexHandle = (e) => {
-    if (e.target.value.length > 4) {
-      setUserPassword(e.target.value);
-      setPasswordRegexFlag(false);
-    } else {
-      setUserPassword(e.target.value);
-      setPasswordRegexFlag(true);
-    }
-    if (!e.target.value) {
-      setPasswordRegexFlag(false);
-    }
-  };
-
   const closeLoginModalHandler = () => {
     contextInfo.setCloseLoginModal((perv) => !perv);
-    setUserFirstName("");
-    setUserLastName("");
-    setUserEmail("");
-    setUserPhoneNumber("");
-    setUserPassword("");
+    setFirstName("");
+    setLastName("");
+    setEmail("");
     setEditLoader(false);
   };
 
   const clickLoginModalHandler = () => {
-    if (
-      userFirstName &&
-      userLastName &&
-      userEmail &&
-      userPhoneNumber &&
-      userPassword
-    ) {
+    if (firstName && lastName && email) {
       setEditLoader(true);
       let newUserEdit = {
-        userFirstName,
-        userLastName,
-        userEmail,
-        userPhoneNumber,
-        userPassword,
-        userimage,
+        sex: contextInfo.user.sex,
+        firstName,
+        lastName,
+        email,
+        password: contextInfo.user.password,
+        phone: contextInfo.user.phone,
+        image,
       };
 
       contextInfo.setUser(newUserEdit);
 
-      fetch(
-        `https://parseapi.back4app.com/classes/users/${findUser.objectId}`,
-        {
-          method: "PUT",
-          headers: {
-            "X-Parse-Application-Id":
-              "SJPABe5OJHZ106zwv8Sfc79oJZz7oUR8bndbVFiC",
-            "X-Parse-REST-API-Key": "2IxFijYb4hbFqjRhrrQs3enMpax87qgSUKixgOSY",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newUserEdit),
-        }
-      ).then((res) => {
+      fetch(`http://localhost:4000/api/users/${findUser}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          image,
+        }),
+      }).then((res) => {
+        console.log(res);
         res.status < 400 && closeLoginModalHandler();
-        window.location.reload();
       });
     }
   };
 
-  const handleimageUpload = (event) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const imageDataUrl = e.target.result;
-      setUserimage(imageDataUrl);
-    };
-    reader.readAsDataURL(file);
+    Resizer.imageFileResizer(
+      file,
+      300, // New width
+      300, // New height
+      "JPEG", // Format
+      99, // Quality
+      0, // Rotation
+      (uri) => {
+        setImage(uri); // Set state with resized image data URL
+      },
+      "base64" // Output type
+    );
   };
 
   return (
@@ -178,38 +148,22 @@ export default function SiteModals() {
             {passEdit ? (
               <>
                 <input
-                  onChange={(e) => setUserFirstName(e.target.value)}
-                  value={userFirstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  value={firstName}
                   className="userNameLoginForm"
                   type="text"
                   placeholder="نام"
                 />
                 <input
-                  onChange={(e) => setUserLastName(e.target.value)}
-                  value={userLastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  value={lastName}
                   className="userNameLoginForm"
                   type="text"
                   placeholder="نام خانوادگی"
                 />
                 <input
-                  onChange={(e) => phonNumberRegexHandle(e)}
-                  value={userPhoneNumber}
-                  className="PhoneNumberLoginForm"
-                  type="text"
-                  placeholder="تلفن همراه"
-                />
-                <p
-                  className={
-                    phonNumberRegexFlag
-                      ? "formAlerts formAlertsActive"
-                      : "formAlerts"
-                  }
-                >
-                  please write correct phone number
-                </p>
-                <input
                   onChange={(e) => emailRegexHandle(e)}
-                  value={userEmail}
+                  value={email}
                   className="emailLoginForm"
                   type="text"
                   placeholder="ایمیل"
@@ -223,25 +177,9 @@ export default function SiteModals() {
                 >
                   please write correct email
                 </p>
-                <input
-                  onChange={(e) => passwordRegexHandle(e)}
-                  value={userPassword}
-                  className="passwordLoginForm"
-                  type="password"
-                  placeholder="رمز عبور"
-                />
-                <p
-                  className={
-                    passwordRegexFlag
-                      ? "formAlerts formAlertsActive"
-                      : "formAlerts"
-                  }
-                >
-                  write corrector between 5 and 8
-                </p>
 
                 <input
-                  onChange={handleimageUpload}
+                  onChange={handleImageUpload}
                   className="passwordLoginForm"
                   type="file"
                   placeholder="set image"
@@ -279,12 +217,11 @@ export default function SiteModals() {
                   onClick={() => {
                     contextInfo.setCloseLoginModal(false);
                     setFindPassHelp("");
-                    setUserFirstName("");
-                    setUserLastName("");
-                    setUserEmail("");
-                    setUserPhoneNumber("");
-                    setUserPassword("");
-                    setUserimage("");
+                    setFirstName("");
+                    setLastName("");
+                    setEmail("");
+
+                    setImage("");
                   }}
                   className="fdwqewe"
                   style={{ fontSize: 50 }}

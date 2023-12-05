@@ -79,7 +79,8 @@
   justify-content: space-evenly;
   padding: 1rem;
 }
-.loginForm input {
+.loginForm input,
+.loginForm select {
   direction: rtl;
   width: 70%;
   background-color: gray;
@@ -97,34 +98,34 @@
 .loginForm input:focus {
   outline: 2px solid var(--second-color);
 }
-.formAlerts{
+.formAlerts {
   color: red;
   font-size: 1.4rem;
   display: none;
 }
-.formAlertsActive{
+.formAlertsActive {
   display: block;
 }
-.colorClickFromActive{
+.colorClickFromActive {
   background: #05d561;
 }
-.colorClickFromDeActive{
+.colorClickFromDeActive {
   background: rgba(113, 7, 7, 0.63);
 }
-.fdwqewe{
+.fdwqewe {
   color: red;
   align-self: end;
   transition: all linear 0.3s;
   cursor: pointer;
   margin-top: -2rem;
 }
-.fdwqewe:active{
+.fdwqewe:active {
   scale: 95%;
 }
-.CloseBtnModal{
+.CloseBtnModal {
   background: red;
 }
-.helpEditText{
+.helpEditText {
   font-size: 1.5rem;
   color: var(--shadow-color);
   margin-bottom: 2rem;

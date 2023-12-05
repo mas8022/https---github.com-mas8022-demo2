@@ -20,19 +20,19 @@ export default function Profile() {
           <div className="UserInfo">
             <label htmlFor="#username">نام کاربری:</label>
             <label className="frfr" id="username">
-              {profContext.user.userFirstName} {profContext.user.userLastName}
+              {profContext.user.firstName} {profContext.user.lastName}
             </label>
             <label htmlFor="#phoneNumber">شماره موبایل:</label>
             <label className="frfr" id="phoneNumber">
-              {profContext.user.userPhoneNumber}
+              {profContext.user.phone}
             </label>
             <label htmlFor="#email">ایمیل:</label>
             <label className="frfr" id="email">
-              {profContext.user.userEmail}
+              {profContext.user.email}
             </label>
             <label htmlFor="#password">رمز عبور:</label>
             <label className="frfr" id="password">
-              {profContext.user.userPassword}
+              {profContext.user.password}
             </label>
           </div>
           <Link
@@ -48,9 +48,9 @@ export default function Profile() {
           <img
             className="ProfilePageimage"
             src={
-              !profContext.user.userimage
+              !profContext.user.image
                 ? "https://img.freepik.com/premium-vector/man-profile-cartoon_18591-58482.jpg?w=360"
-                : profContext.user.userimage
+                : profContext.user.image
             }
             alt="profileimage"
           />

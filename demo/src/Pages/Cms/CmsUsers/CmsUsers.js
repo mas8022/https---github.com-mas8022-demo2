@@ -8,14 +8,10 @@ import context from "../../../ContextSite";
 
 export default function CmsUsers() {
   let cmsUsersContext = useContext(context);
-  const [sex, setSex] = useState("man");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phonenumber, setPhonenumber] = useState("");
   const [image, setImage] = useState(null);
-
   const [loader, setLoader] = useState(false);
   const [selectUserId, setSelectUserId] = useState("");
   const [cmsUsersSearchBar, setCmsUsersSearchBar] = useState("");
@@ -31,7 +27,6 @@ export default function CmsUsers() {
             .includes(cmsUsersSearchBar.toLowerCase().trim());
         }
       });
-      console.log(listUsers);
       setCmsUserList(listUsers);
     }
   }, [cmsUsersSearchBar]);
@@ -54,7 +49,6 @@ export default function CmsUsers() {
 
   const registerProduct = (e) => {
     e.preventDefault();
-    console.log();
     setLoader(true);
     fetch("http://localhost:4000/api/users", {
       method: "POST",
@@ -62,12 +56,9 @@ export default function CmsUsers() {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        sex,
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         email,
-        password,
-        phonenumber,
         image,
       }),
     })
@@ -90,12 +81,9 @@ export default function CmsUsers() {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        sex,
-        firstname,
-        lastname,
+        firstName,
+        lastName,
         email,
-        password,
-        phonenumber,
         image,
       }),
     })
@@ -127,25 +115,18 @@ export default function CmsUsers() {
   };
 
   const DataTr = (user) => {
-    console.log(user);
-    setSelectUserId(user.token);
-    setSex(user.sex);
-    setFirstname(user.firstname);
-    setLastname(user.lastname);
+    setSelectUserId(user.id);
+    setFirstName(user.firstname);
+    setLastName(user.lastname);
     setEmail(user.email);
-    setPhonenumber(user.phonenumber);
-    setPassword(user.password);
     setImage(user.image);
     setCmsUsersSearchBar("");
   };
 
   const clearInputs = () => {
-    setSex("");
-    setFirstname("");
-    setLastname("");
+    setFirstName("");
+    setLastName("");
     setEmail("");
-    setPhonenumber("");
-    setPassword("");
     setImage("");
   };
 
@@ -155,23 +136,12 @@ export default function CmsUsers() {
       <CmsNavbar />
       <div className="cmsProductFlex">
         <form className="productRegisterForm frfre" action="#">
-          <label htmlFor="productCount">جنسیت</label>
-          <select
-            value={sex}
-            onChange={(e) => setSex(e.target.value)}
-            name=""
-            id=""
-          >
-            <option value="man">اقا</option>
-            <option value="woman">خانوم</option>
-          </select>
-          <br />
-          <label htmlFor="firstname">نام</label>
+          <label htmlFor="firstName">نام</label>
 
           <input
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-            id="firstname"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            id="firstName"
             type="text"
             required
             autoFocus
@@ -179,12 +149,12 @@ export default function CmsUsers() {
           />
 
           <br />
-          <label htmlFor="lastname">نام خانوادگی</label>
+          <label htmlFor="lastName">نام خانوادگی</label>
 
           <input
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-            id="lastname"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            id="lastName"
             type="text"
             required
             autoFocus
@@ -202,33 +172,6 @@ export default function CmsUsers() {
             required
             autoFocus
             placeholder="ایمیل:"
-          />
-
-          <br />
-
-          <label htmlFor="phonenumberNumber">شماره موبایل</label>
-
-          <input
-            value={phonenumber}
-            onChange={(e) => setPhonenumber(e.target.value)}
-            id="phonenumberNumber"
-            type="text"
-            required
-            autoFocus
-            placeholder="شماره موبایل:"
-          />
-
-          <br />
-          <label htmlFor="password">رمز عبور</label>
-
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            id="password"
-            type="text"
-            required
-            autoFocus
-            placeholder="رمز عبور:"
           />
 
           <br />

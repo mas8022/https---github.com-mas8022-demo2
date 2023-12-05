@@ -3,7 +3,7 @@
     height: 20rem;
     border-radius: 20px;
     box-shadow: 0px 0px 10px -5px var(--shadow-color);
-    background-size: image !important;
+    background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     display: flex;

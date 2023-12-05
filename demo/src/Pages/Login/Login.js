@@ -6,124 +6,117 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import context from "../../ContextSite";
 import Loader from "../../Component/Loader/Loader";
+import Resizer from "react-image-file-resizer";
 
 /////////////////////////////////////
-////// admin pass = 1234 ////////////
+////// admin pass:
+const adminPass = "1234";
 /////////////////////////////////////
 
 export default function Login() {
   const logContext = useContext(context);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const [userSex, setUserSex] = useState("man");
-  const [userFirstName, setUserFirstName] = useState("");
-  const [userLastName, setUserLastName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userImage, setUserImage] = useState("");
-  const [userEmailAlert, setUserEmailAlert] = useState(false);
-  const [userPhoneNumberAlert, setUserPhoneNumberAlert] = useState(false);
-  const [userPasswordAlert, setUserPasswordAlert] = useState(false);
+  const [sex, setSex] = useState("man");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [image, setImage] = useState(null);
+  const [emailAlert, setEmailAlert] = useState(false);
+  const [phoneAlert, setPhoneAlert] = useState(false);
+  const [passwordAlert, setPasswordAlert] = useState(false);
   const [loaderProf, setLoaderProf] = useState(false);
 
   const resetFormLoginHandle = () => {
-    setUserEmailAlert(false);
-    setUserPhoneNumberAlert(false);
-    setUserPasswordAlert(false);
-    setUserSex("");
-    setUserFirstName("");
-    setUserLastName("");
-    setUserEmail("");
-    setUserPhoneNumber("");
-    setUserPassword("");
-    setUserImage("");
+    setEmailAlert(false);
+    setPhoneAlert(false);
+    setPasswordAlert(false);
+    setSex("");
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setPassword("");
+    setImage("");
   };
 
   const emailRegexHandle = (e) => {
     if (emailRegex.test(e.target.value)) {
-      setUserEmail(e.target.value);
-      setUserEmailAlert(false);
+      setEmail(e.target.value);
+      setEmailAlert(false);
     } else {
-      setUserEmail(e.target.value);
-      setUserEmailAlert(true);
+      setEmail(e.target.value);
+      setEmailAlert(true);
     }
     if (!e.target.value) {
-      setUserEmailAlert(false);
+      setEmailAlert(false);
     }
   };
 
   const phonNumberRegexHandle = (e) => {
     if (!isNaN(e.target.value)) {
-      setUserPhoneNumber(e.target.value);
-      setUserPhoneNumberAlert(false);
+      setPhone(e.target.value);
+      setPhoneAlert(false);
     } else {
-      setUserPhoneNumberAlert(true);
-      setUserPhoneNumber(e.target.value);
+      setPhoneAlert(true);
+      setPhone(e.target.value);
     }
   };
 
   const passwordRegexHandle = (e) => {
     if (e.target.value.length > 4) {
-      setUserPassword(e.target.value);
-      setUserPasswordAlert(false);
+      setPassword(e.target.value);
+      setPasswordAlert(false);
     } else {
-      setUserPassword(e.target.value);
-      setUserPasswordAlert(true);
+      setPassword(e.target.value);
+      setPasswordAlert(true);
     }
     if (!e.target.value) {
-      setUserPasswordAlert(false);
+      setPasswordAlert(false);
     }
   };
 
   const loggingHandle = () => {
     let newUser = {
-      userSex,
-      userFirstName,
-      userLastName,
-      userEmail,
-      userPhoneNumber,
-      userPassword,
-      userImage,
+      sex,
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      image,
     };
-
     if (
-      !userEmailAlert &&
-      !userPhoneNumberAlert &&
-      !userPasswordAlert &&
-      userSex &&
-      userFirstName &&
-      userLastName &&
-      userEmail &&
-      userPhoneNumber &&
-      userPassword &&
-      userImage
+      !emailAlert &&
+      !phoneAlert &&
+      !passwordAlert &&
+      sex &&
+      firstName &&
+      lastName &&
+      email &&
+      phone &&
+      password &&
+      image
     ) {
       setLoaderProf(true);
-      fetch("https://parseapi.back4app.com/classes/users", {
+
+      fetch("http://localhost:4000/api/users", {
         method: "POST",
         headers: {
-          "X-Parse-Application-Id": "SJPABe5OJHZ106zwv8Sfc79oJZz7oUR8bndbVFiC",
-          "X-Parse-REST-API-Key": "2IxFijYb4hbFqjRhrrQs3enMpax87qgSUKixgOSY",
-          "Content-Type": "application/json",
+          "content-type": "application/json",
         },
         body: JSON.stringify({
-          username: "A string",
-          email: "A string",
-          userSex,
-          userEmail,
-          userFirstName,
-          userPhoneNumber,
-          userLastName,
-          userPassword,
-          userImage,
-          phoneNumber: "A string",
-          old: "A string",
-          sex: "A string",
-          name: "A string",
+          sex,
+          firstName,
+          lastName,
+          email,
+          password,
+          phone,
+          image,
         }),
       })
         .then((res) => {
-          console.log(res);
           if (res.ok) {
             logContext.setFlagLog(true);
             logContext.setShowLogin(false);
@@ -140,25 +133,28 @@ export default function Login() {
     }
   };
 
-  const handleimageUpload = (event) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const imageDataUrl = e.target.result;
-      setUserImage(imageDataUrl);
-    };
-
-    reader.readAsDataURL(file);
+    Resizer.imageFileResizer(
+      file,
+      300, // New width
+      300, // New height
+      "JPEG", // Format
+      99, // Quality
+      0, // Rotation
+      (uri) => {
+        setImage(uri); // Set state with resized image data URL
+      },
+      "base64" // Output type
+    );
   };
 
-
   useEffect(() => {
-    if (userPassword === "1234") {
-      window.location.pathname = '/cmsProduct'
-      logContext.setShowLogin(false)
+    if (password === adminPass) {
+      window.location.pathname = "/cmsProduct";
+      logContext.setShowLogin(false);
     }
-  },[userPassword])
+  }, [password]);
 
   return (
     <>
@@ -174,24 +170,24 @@ export default function Login() {
 
           <select
             className="sex-select"
-            value={userSex}
-            onChange={(e) => setUserSex(e.target.value)}
+            value={sex}
+            onChange={(e) => setSex(e.target.value)}
           >
             <option value="man">اقا</option>
             <option value="woman">خانم</option>
           </select>
 
           <input
-            value={userFirstName}
-            onChange={(e) => setUserFirstName(e.target.value)}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             type="text"
             id="first name"
             placeholder="نام"
           />
 
           <input
-            value={userLastName}
-            onChange={(e) => setUserLastName(e.target.value)}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             type="text"
             id="last name"
             placeholder="نام خانوادگی"
@@ -199,37 +195,37 @@ export default function Login() {
 
           <input
             type="email"
-            value={userEmail}
+            value={email}
             onChange={(e) => emailRegexHandle(e)}
             placeholder="ایمیل"
           />
-          {userEmailAlert ? (
+          {emailAlert ? (
             <p className="alert">لطفا ایمیل خود را صحیح وارد نمایید</p>
           ) : null}
 
           <input
-            value={userPhoneNumber}
+            value={phone}
             onChange={(e) => phonNumberRegexHandle(e)}
             type="text"
             id="phone nember"
             placeholder="تلفن همراه"
           />
-          {userPhoneNumberAlert ? (
+          {phoneAlert ? (
             <p className="alert">لطفا شماره تلفن صحیح وارد نمایید</p>
           ) : null}
 
           <input
-            value={userPassword}
+            value={password}
             onChange={(e) => passwordRegexHandle(e)}
             type="password"
             placeholder="رمز عبور"
           />
 
-          {userPasswordAlert ? (
+          {passwordAlert ? (
             <p className="alert">رمز عبورتان بیش از 5 کاراکتر باشد</p>
           ) : null}
 
-          <input onChange={handleimageUpload} type="file" />
+          <input onChange={handleImageUpload} type="file" />
           <div className="formBtns">
             <div onClick={() => loggingHandle()} className="sw redza deded">
               <LoginIcon className="rerdza ehyrt" style={{ fontSize: 35 }} />
